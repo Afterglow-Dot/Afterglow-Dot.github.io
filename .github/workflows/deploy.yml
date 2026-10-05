@@ -55,6 +55,7 @@ on:
       - "!docs/FAQ.md"
       - "!docs/INSTALL.md"
       - "!README.md"
+      - "requirements.txt"
   workflow_dispatch:
 
 permissions:
