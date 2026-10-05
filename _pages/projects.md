@@ -2,7 +2,7 @@
 layout: page
 title: projects
 permalink: /projects/
-description: A growing collection of your cool projects.
+description: 课程项目、科研工作与代码实践。
 nav: true
 nav_order: 3
 display_categories: [work, fun]

@@ -2,18 +2,14 @@
 layout: about
 title: about
 permalink: /
-subtitle: <a href='#'>Affiliations</a>. Address. Contacts. Motto. Etc.
+subtitle: 合肥工业大学 · 通信工程 · 2026 级硕士
 
 profile:
   align: right
   image: prof_pic.jpg
   image_circular: false # crops the image to make it circular
-  more_info: >
-    <p>555 your office number</p>
-    <p>123 your address street</p>
-    <p>Your City, State 12345</p>
 
-selected_papers: true # includes a list of papers marked as "selected={true}"
+selected_papers: false # includes a list of papers marked as "selected={true}"（暂时没有论文，先关掉）
 social: true # includes social icons at the bottom of the page
 
 announcements:
@@ -27,8 +23,12 @@ latest_posts:
   limit: 3 # leave blank to include all the blog posts
 ---
 
-Write your biography here. Tell the world about yourself. Link to your favorite [subreddit](https://www.reddit.com). You can put a picture in, too. The code is already in, just name your picture `prof_pic.jpg` and put it in the `img/` folder.
+大家好！我是李大杰，合肥工业大学通信工程专业的硕士研究生，目前研一在读。
 
-Put your address / P.O. box / other info right below your picture. You can also disable any of these elements by editing `profile` property of the YAML header of your `_pages/about.md`. Edit `_bibliography/papers.bib` and Jekyll will render your [publications page](/al-folio/publications/) automatically.
+这里是我记录研究生学习与生活的小站。我会在这里分享：
 
-Link to your social media connections, too. This theme is set up to use [Font Awesome icons](https://fontawesome.com/) and [Academicons](https://jpswalsh.github.io/academicons/), like the ones below. Add your Facebook, Twitter, LinkedIn, Google Scholar, or just disable all of them.
+- 📚 **学习笔记**：课程笔记、文献阅读、工具使用
+- 💻 **科研进展**：实验记录、代码实践、论文写作
+- 🌱 **生活随笔**：读研日常、心态变化、读书分享
+
+欢迎交流，我的邮箱是：2026170686@mail.hfut.edu.cn
