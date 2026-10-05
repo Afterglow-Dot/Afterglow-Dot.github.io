@@ -1,9 +1,27 @@
-"AJP":
-  url: https://aapt.scitation.org/journal/ajp
+# ============================================================================
+# 期刊/会议缩写配置
+# ============================================================================
+# 当你在 papers.bib 中使用 abbr = {ICASSP} 时，
+# 系统会自动匹配这里的配置，显示对应的颜色和超链接。
+
+# 通信领域常见会议
+"ICASSP":
+  url: https://ieeexplore.ieee.org/xpl/conhome/1000002/all-proceedings
+  color: "#0066cc"
+
+"Globecom":
+  url: https://ieeexplore.ieee.org/xpl/conhome/1000002/all-proceedings
+  color: "#cc6600"
+
+"ICC":
+  url: https://ieeexplore.ieee.org/xpl/conhome/1000002/all-proceedings
+  color: "#009933"
+
+# 通信领域常见期刊
+"IEEE Trans. Commun.":
+  url: https://ieeexplore.ieee.org/xpl/RecentIssue.jsp?punumber=26
   color: "#00369f"
 
-"PhysRev":
-  url: https://journals.aps.org/
-
-"Vision":
-  color: "#009f36"
+"IEEE Commun. Lett.":
+  url: https://ieeexplore.ieee.org/xpl/RecentIssue.jsp?punumber=4234
+  color: "#660099"

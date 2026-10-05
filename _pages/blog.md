@@ -1,4 +1,11 @@
 ---
+# ============================================================================
+# 博客列表页配置
+# ============================================================================
+# 【注意】下面的一大堆 {% ... %} 代码是系统自动生成博客卡片的逻辑，
+# 千万不要修改！你唯一可以安全修改的是 `per_page: 5`，
+# 它代表每页显示几篇文章，改成 10 就会一页显示 10 篇。
+# ============================================================================
 layout: default
 permalink: /blog/
 title: blog
@@ -21,17 +28,11 @@ pagination:
 {% assign blog_name_size = site.blog_name | size %}
 {% assign blog_description_size = site.blog_description | size %}
 
-{% if blog_name_size > 0 or blog_description_size > 0 %}
-
-  <div class="header-bar">
-    <h1>{{ site.blog_name }}</h1>
-    <h2>{{ site.blog_description }}</h2>
-  </div>
-  {% endif %}
-
 {% if site.display_tags and site.display_tags.size > 0 or site.display_categories and site.display_categories.size > 0 %}
 
   <div class="tag-category-list">
+    <!-- 第一部分：标签 -->
+    {% if site.display_tags and site.display_tags.size > 0 %}
     <ul class="p-0 m-0">
       {% for tag in site.display_tags %}
         <li>
@@ -41,9 +42,15 @@ pagination:
           <p>&bull;</p>
         {% endunless %}
       {% endfor %}
-      {% if site.display_categories.size > 0 and site.display_tags.size > 0 %}
-        <p>&bull;</p>
-      {% endif %}
+    </ul>
+    {% endif %}
+
+    <!-- 中间加一个换行，让分类另起一行 -->
+    <br>
+
+    <!-- 第二部分：分类 -->
+    {% if site.display_categories and site.display_categories.size > 0 %}
+    <ul class="p-0 m-0 mt-2">
       {% for category in site.display_categories %}
         <li>
           <i class="fa-solid fa-tag fa-sm"></i> <a href="{{ category | slugify | prepend: '/blog/category/' | relative_url }}">{{ category }}</a>
@@ -53,8 +60,10 @@ pagination:
         {% endunless %}
       {% endfor %}
     </ul>
+    {% endif %}
   </div>
-  {% endif %}
+
+{% endif %}
 
 {% assign featured_posts = site.posts | where: "featured", "true" %}
 {% if featured_posts.size > 0 %}

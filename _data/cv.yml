@@ -1,3 +1,6 @@
+# ============================================================================
+# 个人简历 (CV) 配置
+# ============================================================================
 cv:
   name: 李大杰
   label: 硕士研究生 · 通信工程
@@ -12,7 +15,6 @@ cv:
 
   sections:
     # ---------------------------------------------------------------
-    # 学历。本科起止年份请按实际填写（下面是待你确认的占位值）。
     # 在读的条目把 end_date 留空，页面上会显示为“至今”。
     # ---------------------------------------------------------------
     Education:
@@ -28,35 +30,28 @@ cv:
         highlights:
           - 研一在读，课程学习与科研入门阶段。
 
-      # - institution: 你的本科院校（请替换）
-      #   location: 城市（请替换）
-      #   url: ""
-      #   area: 你的本科专业（请替换）
-      #   studyType: 本科 (BSc)
-      #   start_date: 2022-09
-      #   end_date: 2026-06
-      #   score: ""
-      #   courses: ""
-      #   highlights: []
+      - institution: 兰州交通大学 (Lanzhou Jiaotong University)
+        location: 甘肃兰州
+        url: "https://www.lzjtu.cn/"
+        area: 通信工程 (Communication Engineering)
+        studyType: 本科 (BSc)
+        start_date: 2022-09
+        end_date: 2026-06
+        score: ""
+        courses: ""
+        highlights: []
 
     # ---------------------------------------------------------------
     # 技能。按自己的实际情况增删条目，name 会显示为小标题。
     # ---------------------------------------------------------------
     Skills:
-      - name: 通信与信号处理
-        level: ""
+      - name: 信号与信息处理
         icon: fa-solid fa-tower-broadcast
         keywords: "数字通信, 信号处理, 无线通信"
 
       - name: 编程与工具
-        level: ""
         icon: fa-solid fa-code
-        keywords: "Python, MATLAB, C/C++, Git, LaTeX"
-
-      - name: 语言
-        level: ""
-        icon: fa-solid fa-language
-        keywords: "中文（母语）, 英语（CET-6）"
+        keywords: "Python, MATLAB, C/C++, Git, LaTeX, STM32, FPGA"
 
     # ---------------------------------------------------------------
     # 研究方向 / 兴趣
@@ -64,7 +59,7 @@ cv:
     Interests:
       - name: 通信工程
         icon: fa-solid fa-tag
-        keywords: "无线通信, 信号处理, 通信网络"
+        keywords: "信号处理, 嵌入式系统, FPGA"
 
     # ===============================================================
     # 以下分区等你真正有了内容再启用：删掉对应行首的 “#” 即可。
@@ -112,18 +107,3 @@ cv:
     #     date: 2025-06-01
     #     issuer: 发证机构
     #     icon: fa-solid fa-certificate
-
-    # Volunteer:
-    #   - company: 组织名称
-    #     position: 担任角色
-    #     location: 城市
-    #     start_date: 2024-09-01
-    #     end_date: 2025-06-01
-    #     summary: 一句话说明。
-    #     highlights:
-    #       - 具体贡献。
-
-    # References:
-    #   - name: 推荐人姓名
-    #     icon: fa-solid fa-user
-    #     reference: 推荐语或联系方式。

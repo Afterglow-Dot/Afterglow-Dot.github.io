@@ -1,3 +1,14 @@
 # for more options, see https://docs.rendercv.com/user_guide/yaml_input_structure/locale/
+# ============================================================================
+# RenderCV 简历语言配置
+# ============================================================================
+# 这个文件控制自动生成的 PDF 简历使用哪种语言（例如日期格式、章节标题）。
+#
+# 【建议】
+# - 如果你的简历主要给国内导师/同学看，可以改成 chinese。
+# - 但注意：某些主题对中文支持可能不完整，如果 PDF 出现乱码，就改回 english。
+# - 现在用 english 最稳妥。
+# ============================================================================
+
 locale:
-  language: english
+  language: english # 可选值：english、chinese、spanish、french、german 等

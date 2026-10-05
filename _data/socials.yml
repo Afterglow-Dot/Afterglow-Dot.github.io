@@ -1,14 +1,15 @@
-# this file contains the social media links and usernames of the author
-# the socials will be displayed in the order they are defined here
-# for more information, please refer to the documentation of jekyll-socials plugin: https://github.com/george-gca/jekyll-socials
-# email: 2026170686@mail.hfut.edu.cn # your email address
-# github: Afterglow-Dot
-rss_icon: true # comment this line to hide the RSS icon
+# ============================================================================
+# 社交链接配置
+# ============================================================================
+# 说明：这些链接会显示在首页底部的社交图标区域。
+# 注意：如果你要启用某个链接，必须写清 logo 字段，否则会导致网站构建失败！
+#
+# 下面是正确且安全的写法：
+email:
+  logo: email.svg
+  url: mailto:2026170686@mail.hfut.edu.cn
+github:
+  logo: github.svg
+  url: https://github.com/Afterglow-Dot
 
-# wechat_qr: # filename of your wechat qr-code saved as an image (e.g., wechat-qr.png if saved to assets/img/wechat-qr.png)
-# whatsapp_number: # your WhatsApp number (full phone number in international format. Omit any zeroes, brackets, or dashes when adding the phone number in international format.)
-# custom_social: # can be any name here other than the ones already defined in the jekyll-socials plugin
-#   logo: # can be png, svg, jpg
-#   title: Custom Social
-#   url: 
-
+rss_icon: false # 是否显示 RSS 订阅图标
