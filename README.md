@@ -10,17 +10,17 @@
 
 ## 📁 项目结构
 
-| 目录 / 文件 | 作用 |
-| :--- | :--- |
-| `_config.yml` | 网站全局配置：标题、作者、URL、社交链接、插件等 |
-| `_data/` | 数据文件：社交链接、简历、期刊缩写、共同作者等 |
-| `_pages/` | 固定页面：关于我、博客、简历、项目、论文等 |
-| `_posts/` | 博客文章和首页短动态 |
-| `_projects/` | 项目展示页面的内容 |
-| `_bibliography/` | 论文 BibTeX 文件（`papers.bib`） |
-| `_news/` | 首页新闻动态（备选，也可以用 `_posts` 的 `inline: true`） |
-| `assets/` | 图片、CSS、JS、PDF 等静态资源 |
-| `.github/workflows/` | GitHub Actions 自动部署配置 |
+| 目录 / 文件          | 作用                                                      |
+| :------------------- | :-------------------------------------------------------- |
+| `_config.yml`        | 网站全局配置：标题、作者、URL、社交链接、插件等           |
+| `_data/`             | 数据文件：社交链接、简历、期刊缩写、共同作者等            |
+| `_pages/`            | 固定页面：关于我、博客、简历、项目、论文等                |
+| `_posts/`            | 博客文章和首页短动态                                      |
+| `_projects/`         | 项目展示页面的内容                                        |
+| `_bibliography/`     | 论文 BibTeX 文件（`papers.bib`）                          |
+| `_news/`             | 首页新闻动态（备选，也可以用 `_posts` 的 `inline: true`） |
+| `assets/`            | 图片、CSS、JS、PDF 等静态资源                             |
+| `.github/workflows/` | GitHub Actions 自动部署配置                               |
 
 ---
 
