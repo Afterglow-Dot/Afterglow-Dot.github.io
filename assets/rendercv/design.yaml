@@ -1,7 +1,18 @@
 # for more options, see https://docs.rendercv.com/user_guide/yaml_input_structure/design/
+# ============================================================================
+# RenderCV 简历设计配置
+# ============================================================================
+# 这个文件决定了自动生成的 PDF 简历长什么样：用什么主题、什么纸张大小、要不要页脚等。
+#
+# 【建议】
+# - 如果不懂，保持默认即可。
+# - 想换主题，可以把 theme 改成：classic、moderncv、sb2nov、engineeringresumes
+#   但要注意，不同主题对内容字段的显示方式不同，可能需要同步调整 cv.yml。
+# ============================================================================
+
 design:
-  theme: classic
+  theme: moderncv # 简历主题：classic（经典）、moderncv（现代）、sb2nov（简洁）、engineeringresumes（工程风）
   page:
-    size: a4
-    show_footer: false
-    show_top_note: false
+    size: a4             # 纸张大小：a4 或 letter
+    show_footer: false   # 是否在页脚显示页码等信息
+    show_top_note: false # 是否在页面顶部显示备注
