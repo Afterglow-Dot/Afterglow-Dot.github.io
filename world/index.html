@@ -1,0 +1,378 @@
+<!DOCTYPE html> <html lang="zh-CN"> <head> <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"> <meta charset="utf-8"> <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"> <meta http-equiv="X-UA-Compatible" content="IE=edge"> <title> 科研大厅 | Dajie's Homepage </title> <meta name="author" content="Dajie Li"> <meta name="description" content="把论文、专利、获奖、项目与随笔摊开成一座 3D 书架。"> <meta name="keywords" content="HFUT, Communication Engineering, Signal Processing, Graduate Student Blog"> <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https:; style-src 'self' 'unsafe-inline' https:; img-src 'self' data: https:; font-src 'self' data: https:; media-src 'self' https:; frame-src 'self' https:; connect-src 'self' https:;"> <style>
+  :root {
+    --max-content-width: 930px;
+  }
+</style> <link rel="stylesheet" href="/assets/css/tailwind.css?v=50c64c15cbb9fd1ce6056fdb8bcb4b62"> <link defer rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@7.2.0/css/all.min.css" integrity="sha256-MVopmdyC2tYTiJ8wlktf0uh0v4NgT+vNdyVFepi7Q0c=" crossorigin="anonymous"> <link defer rel="stylesheet" href="https://cdn.jsdelivr.net/npm/academicons@1.9.5/css/academicons.min.css" integrity="sha256-SzrCOBJbGVFMahewkgjwnApaV2+av1DwMAA+/QGLyZw=" crossorigin="anonymous"> <link defer rel="stylesheet" href="https://cdn.jsdelivr.net/npm/scholar-icons@1.0.3/css/scholar-icons.css" integrity="sha256-VY3hHVj/hNX3fYG6wtbA6TcKJQl7+FthzGSyIB64klY=" crossorigin="anonymous"> <link defer rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:100,300,400,500,700|Material+Icons&amp;display=swap"> <link defer rel="stylesheet" href="/assets/css/jekyll-pygments-themes-github.css?v=591dab5a4e56573bf4ef7fd332894c99" media="" id="highlight_theme_light"> <link rel="shortcut icon" href="data:image/svg+xml,&lt;svg%20xmlns=%22http://www.w3.org/2000/svg%22%20viewBox=%220%200%20100%20100%22&gt;&lt;text%20y=%22.9em%22%20font-size=%2290%22&gt;%F0%9F%8E%93&lt;/text&gt;&lt;/svg&gt;"> <link rel="stylesheet" href="/assets/css/main.css?v=3116ba77db9ee1581d05bb3e86fbf7f1"> <link rel="canonical" href="https://afterglow-dot.github.io/world/"> <script src="/assets/js/theme.js?v=5286c3e4c334d0ecb8fc0c40ff4fa7ec"></script> <link defer rel="stylesheet" href="/assets/css/jekyll-pygments-themes-native.css?v=5847e5ed4a4568527aa6cfab446049ca" media="none" id="highlight_theme_dark"> <script>
+    initTheme();
+  </script> </head> <body class="fixed-top-nav "> <header> <nav id="navbar" class="navbar navbar-light navbar-expand-sm fixed-top" role="navigation"> <div class="container"> <a class="navbar-brand title font-weight-lighter" href="/"> Dajie's Homepage </a> <button class="navbar-toggler collapsed navbar-toggler-main" type="button" data-nav-toggle="navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation"> <span class="sr-only">Toggle navigation</span> <span class="icon-bar top-bar"></span> <span class="icon-bar middle-bar"></span> <span class="icon-bar bottom-bar"></span> </button> <div class="collapse navbar-collapse navbar-collapse-main" id="navbarNav"> <ul class="navbar-nav navbar-menu-list flex-nowrap"> <li class="nav-item "> <a class="nav-link" href="/">About </a> </li> <li class="nav-item "> <a class="nav-link" href="/blog/">Blog </a> </li> <li class="nav-item "> <a class="nav-link" href="/publications/">Publications </a> </li> <li class="nav-item "> <a class="nav-link" href="/projects/">Projects </a> </li> <li class="nav-item "> <a class="nav-link" href="/cv/">CV </a> </li> <li class="nav-item "> <a class="nav-link" href="/patents/">Patents </a> </li> <li class="nav-item "> <a class="nav-link" href="/awards/">Awards </a> </li> <li class="nav-item active"> <a class="nav-link" href="/world/">科研大厅 <span class="sr-only">(current)</span> </a> </li> <li class="nav-item"> <button id="search-toggle" type="button" title="Search" aria-label="Open search"> <span class="nav-link">ctrl k <i class="fa-solid fa-magnifying-glass"></i></span> </button> </li> <li class="toggle-container"> <button id="light-toggle" type="button" title="Change theme" aria-label="Change color theme"> <i class="fa-half-sun-moon" id="light-toggle-system"></i> <i class="fa-solid fa-moon" id="light-toggle-dark"></i> <i class="fa-solid fa-sun" id="light-toggle-light"></i> </button> </li> </ul> </div> </div> </nav> <progress id="progress" value="0"> <div class="progress-container"> <span class="progress-bar"></span> </div> </progress> </header> <div class="container mt-5" role="main"> <div class="post"> <header class="post-header"> <h1 class="post-title">科研大厅</h1> <p class="post-description">把论文、专利、获奖、项目与随笔摊开成一座 3D 书架。</p> </header> <article> <div id="world-root" data-world-state="idle"> <div class="world-layer" id="world-stage"> <canvas id="world-canvas" aria-label="3D 科研书架" role="img"></canvas> <div class="world-hud" id="world-hud"> <div class="world-title">科研大厅</div> <div class="world-hint">拖动旋转 · 滚轮缩放 · 点击书本进入 · <a href="#world-fallback" id="world-list-link">切换到列表</a> </div> </div> </div> <noscript> <p class="text-muted">你的浏览器未启用 JavaScript，下面是可以直接浏览的列表版本。</p> </noscript> <div id="world-fallback"> <h2>论文</h2> <p class="text-muted">论文列表请见 <a href="/publications/">Publications</a> 页面。</p> <h2>专利</h2> <ul> <li> <a href="/patents/1-patent-template/">一种基于××的××方法</a> （发明专利 · 已受理） </li> </ul> <h2>获奖</h2> <ul> <li> <a href="/awards/1-award-template/">全国大学生××竞赛 一等奖</a> （国家级 · 一等奖） </li> </ul> <h2>项目</h2> <ul> <li><a href="/projects/1_project-template/">示例项目</a></li> </ul> <h2>随笔与笔记</h2> <ul> <li> <a href="/blog/2026/see-world-see-self/">见天地，见众生，见自己</a> <small class="text-muted">2026-10-01</small> </li> </ul> </div> <div id="world-data" style="display: none" aria-hidden="true"> <span class="world-item" data-kind="patent" data-title="一种基于××的××方法" data-url="/patents/1-patent-template/" data-tag="发明专利" data-meta="已受理" data-date="2026-01-01"></span> <span class="world-item" data-kind="award" data-title="全国大学生××竞赛 一等奖" data-url="/awards/1-award-template/" data-tag="国家级" data-meta="一等奖" data-date="2026-05-01"></span> <span class="world-item" data-kind="project" data-title="示例项目" data-url="/projects/1_project-template/" data-tag="科研项目" data-meta="" data-date=""></span> <span class="world-item" data-kind="post" data-title="见天地，见众生，见自己" data-url="/blog/2026/see-world-see-self/" data-tag="日常记录" data-meta="" data-date="2026-10-01"></span> </div> </div> <style>
+  /* --- 1. 打破 layout: page 的 930px 容器宽度限制 -------------------------
+     仅当本页存在时生效（:has 检测）。不支持 :has 的浏览器会退回到
+     正常的 930px 容器布局，功能不受影响，只是舞台没那么宽。 */
+  @supports selector(:has(*)) {
+    body:has(#world-root) .container {
+      max-width: none;
+      padding-left: 0;
+      padding-right: 0;
+    }
+    body:has(#world-root) .post,
+    body:has(#world-root) article {
+      margin: 0;
+      max-width: none;
+    }
+  }
+
+  /* --- 2. 舞台层 --------------------------------------------------------- */
+  #world-root {
+    position: relative;
+  }
+
+  .world-layer {
+    position: relative;
+    height: 78vh;
+    min-height: 440px;
+    margin: 0;
+    border-radius: 12px;
+    overflow: hidden;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.45s ease;
+    background: radial-gradient(ellipse at 50% 40%, #0b171f 0%, #04070d 70%, #01030a 100%);
+  }
+
+  #world-root[data-world-state="ready"] .world-layer {
+    opacity: 1;
+    pointer-events: auto;
+  }
+
+  #world-root[data-world-state="failed"] .world-layer {
+    opacity: 1;
+    pointer-events: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  #world-canvas {
+    display: block;
+    width: 100%;
+    height: 100%;
+    outline: none;
+    touch-action: none; /* 让 OrbitControls 接管触屏拖动，避免整页跟着滚 */
+  }
+
+  /* --- 3. HUD：必须浮在 canvas 之上，否则点不到书 ------------------------ */
+  .world-hud {
+    position: absolute;
+    top: 14px;
+    left: 16px;
+    right: 16px;
+    z-index: 10;
+    pointer-events: none; /* 只有链接本身可点，其余穿透到 canvas */
+    font-size: 0.85rem;
+    color: #cfe8f5;
+    text-shadow: 0 1px 6px rgba(0, 0, 0, 0.85);
+  }
+
+  .world-hud a {
+    pointer-events: auto;
+    color: #4fc3f7;
+    text-decoration: underline;
+  }
+
+  .world-title {
+    font-size: 1.15rem;
+    font-weight: 600;
+    letter-spacing: 0.14em;
+    color: #eaf6ff;
+    margin-bottom: 4px;
+  }
+
+  .world-hint {
+    opacity: 0.8;
+  }
+
+  .world-legend {
+    margin-top: 8px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+
+  .world-legend span {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+  }
+
+  .world-legend i {
+    width: 9px;
+    height: 9px;
+    border-radius: 2px;
+    display: inline-block;
+  }
+
+  /* 悬停时浮出的标题卡 */
+  #world-tip {
+    position: absolute;
+    z-index: 11;
+    max-width: 320px;
+    padding: 9px 12px;
+    border-radius: 8px;
+    background: rgba(6, 16, 24, 0.9);
+    border: 1px solid rgba(79, 195, 247, 0.45);
+    box-shadow: 0 8px 28px rgba(0, 0, 0, 0.6);
+    color: #eaf6ff;
+    font-size: 0.82rem;
+    line-height: 1.45;
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 0.15s ease;
+  }
+
+  #world-tip.is-visible {
+    opacity: 1;
+  }
+
+  #world-tip .tip-tag {
+    display: block;
+    font-size: 0.7rem;
+    letter-spacing: 0.08em;
+    opacity: 0.75;
+    margin-bottom: 3px;
+  }
+
+  /* --- 4. 静态降级列表 --------------------------------------------------- */
+  #world-fallback {
+    padding-top: 6px;
+  }
+
+  #world-fallback h2 {
+    font-size: 1.05rem;
+    margin: 1.4rem 0 0.5rem;
+    padding-bottom: 0.3rem;
+    border-bottom: 1px solid rgba(128, 128, 128, 0.28);
+  }
+
+  #world-fallback ul {
+    padding-left: 1.15rem;
+    margin-bottom: 0.4rem;
+  }
+
+  #world-fallback li {
+    margin-bottom: 0.3rem;
+    line-height: 1.55;
+  }
+
+  #world-root[data-world-state="ready"] #world-fallback {
+    display: none;
+  }
+
+  #world-root[data-world-state="loading"] #world-fallback::before {
+    content: "正在搭建 3D 书架…若长时间无响应，可直接使用下方列表浏览。";
+    display: block;
+    margin-bottom: 1rem;
+    font-size: 0.85rem;
+    opacity: 0.7;
+  }
+
+  /* --- 5. 无障碍与性能偏好 ---------------------------------------------- */
+  @media (prefers-reduced-motion: reduce) {
+    .world-layer {
+      transition: none;
+    }
+    #world-tip {
+      transition: none;
+    }
+  }
+
+  /* 触屏设备：给舞台多一点高度，并提示用单指拖动 */
+  @media (pointer: coarse) {
+    .world-layer {
+      height: 68vh;
+    }
+  }
+</style> <script type="module">
+  // 3D 模块从 CDN 动态加载，且只在 /world/ 这一页发生，
+  // 不会进入全站主包，因此其他页面的性能完全不受影响。
+  const root = document.getElementById("world-root");
+  const dataEl = document.getElementById("world-data");
+
+  const fallback = (reason) => {
+    if (root) root.setAttribute("data-world-state", "failed");
+    const stage = document.getElementById("world-stage");
+    if (stage && !stage.querySelector(".world-error")) {
+      const note = document.createElement("p");
+      note.className = "world-error";
+      note.style.cssText = "color:#cfe8f5;padding:24px;text-align:center;margin:0";
+      note.textContent = "3D 视图不可用（" + reason + "）。请使用下方列表浏览。";
+      stage.appendChild(note);
+    }
+  };
+
+  // 仅检查 window.WebGLRenderingContext 存在是不够的：显卡驱动被禁用、
+  // 远程桌面、无头环境都可能拿到了构造函数却创建不出上下文。
+  // 因此这里真的试建一次上下文，用完立刻丢弃，不占显存。
+  const webglAvailable = () => {
+    try {
+      const probe = document.createElement("canvas");
+      const gl =
+        probe.getContext("webgl2") ||
+        probe.getContext("webgl") ||
+        probe.getContext("experimental-webgl");
+      if (!gl) return false;
+      const lose = gl.getExtension("WEBGL_lose_context");
+      if (lose) lose.loseContext(); // 主动释放探测用的上下文
+      return true;
+    } catch (e) {
+      return false;
+    }
+  };
+
+  if (!root || !dataEl) {
+    // 结构缺失时不应抛错，页面保持可用
+  } else if (!webglAvailable()) {
+    fallback("浏览器或设备不支持 WebGL");
+  } else {
+    root.setAttribute("data-world-state", "loading");
+    try {
+      const mod = await import("/assets/js/world/world.js");
+      await mod.initWorld({ root: root, dataEl: dataEl });
+      root.setAttribute("data-world-state", "ready");
+    } catch (err) {
+      // 任何一种失败都退化为列表，页面永远可用
+      fallback((err && err.message) || "加载失败");
+      if (window.console && console.warn) console.warn("[world] 初始化失败：", err);
+    }
+  }
+</script> </article> </div> </div> <footer class="fixed-bottom" role="contentinfo"> <div class="container mt-0"> © Copyright 2026 Dajie Li. Powered by <a href="https://jekyllrb.com/" target="_blank" rel="external nofollow noopener">Jekyll</a> with <a href="https://github.com/alshedivat/al-folio" rel="external nofollow noopener" target="_blank">al-folio</a> theme. </div> </footer> <script>
+  window.alFolio = {
+    compatBootstrap: false
+  };
+</script> <script src="/assets/js/nav-toggle.js?v=141bd79a73ebc0f0b6ea58e440ae79fc"></script> <script defer src="https://cdn.jsdelivr.net/npm/masonry-layout@4.2.2/dist/masonry.pkgd.min.js" integrity="sha256-Nn1q/fx0H7SNLZMQ5Hw5JLaTRZp0yILA/FRexe19VdI=" crossorigin="anonymous"></script> <script defer src="https://cdn.jsdelivr.net/npm/imagesloaded@5.0.0/imagesloaded.pkgd.min.js" integrity="sha256-htrLFfZJ6v5udOG+3kNLINIKh2gvoKqwEhHYfTTMICc=" crossorigin="anonymous"></script> <script defer src="/assets/js/masonry.js?v=e49affc7bd2646f6acdad1dbe02c2359" type="text/javascript"></script> <script defer type="text/javascript" id="MathJax-script" src="https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-mml-chtml.js" integrity="sha256-MASABpB4tYktI2Oitl4t+78w/lyA+D7b/s9GEP0JOGI=" crossorigin="anonymous"></script> <script src="/assets/al_math/js/mathjax-setup.js"></script> <script src="/assets/js/tooltips-setup.js?v=fe487e99db6c43751e6e7bdb2d6a0611"></script> <script src="/assets/js/no_defer.js?v=53b1b1a645525975c963ce8bf8bfefcf"></script> <script defer src="/assets/js/common.js?v=87baac90f765f2f3362dcf6aaf312a8a"></script> <script defer src="/assets/js/copy_code.js?v=c8a01c11a92744d44b093fc3bda915df" type="text/javascript"></script> <script defer src="/assets/js/jupyter_new_tab.js?v=896d254890d9b47f0281f63bfccf0dee"></script> <script defer src="https://cdn.jsdelivr.net/npm/medium-zoom@1.1.0/dist/medium-zoom.min.js" integrity="sha256-ZgMyDAIYDYGxbcpJcfUnYwNevG/xi9OHKaR/8GK+jWc=" crossorigin="anonymous"></script> <script defer src="/assets/al_img_tools/js/zoom.js"></script> <script defer src="/assets/js/progress-bar.js?v=499464c5c63ced6cf7ad62509f1e2610" type="text/javascript"></script> <script src="https://cdn.jsdelivr.net/npm/vanilla-back-to-top@7.2.1/dist/vanilla-back-to-top.min.js" integrity="sha256-uMJJ3EoTyfRBoTbR+lrfu1uRQ87RZG8AR3cVNuQVeFg=" crossorigin="anonymous"></script> <script>
+    addBackToTop();
+  </script> <script type="module" src="/assets/al_search/js/search/ninja-keys.min.js"></script> <ninja-keys hidebreadcrumbs noautoloadmdicons placeholder="Type to start searching"></ninja-keys> <script src="/assets/al_search/js/search-setup.js"></script> <script>
+// get the ninja-keys element
+const ninja = document.querySelector('ninja-keys');
+
+// add the home and posts menu items
+ninja.data = [{
+    id: "nav-about",
+    title: "About",
+    section: "Navigation",
+    handler: () => {
+      window.location.href = "/";
+    },
+  },{id: "nav-blog",
+          title: "Blog",
+          description: "",
+          section: "Navigation",
+          handler: () => {
+            window.location.href = "/blog/";
+          },
+        },{id: "nav-publications",
+          title: "Publications",
+          description: "我的论文列表。",
+          section: "Navigation",
+          handler: () => {
+            window.location.href = "/publications/";
+          },
+        },{id: "nav-projects",
+          title: "Projects",
+          description: "课程项目、科研工作与代码实践。",
+          section: "Navigation",
+          handler: () => {
+            window.location.href = "/projects/";
+          },
+        },{id: "nav-cv",
+          title: "CV",
+          description: "个人简历。",
+          section: "Navigation",
+          handler: () => {
+            window.location.href = "/cv/";
+          },
+        },{id: "nav-patents",
+          title: "Patents",
+          description: "我的专利与软件著作权。",
+          section: "Navigation",
+          handler: () => {
+            window.location.href = "/patents/";
+          },
+        },{id: "nav-awards",
+          title: "Awards",
+          description: "我的竞赛与荣誉记录。",
+          section: "Navigation",
+          handler: () => {
+            window.location.href = "/awards/";
+          },
+        },{id: "nav-科研大厅",
+          title: "科研大厅",
+          description: "把论文、专利、获奖、项目与随笔摊开成一座 3D 书架。",
+          section: "Navigation",
+          handler: () => {
+            window.location.href = "/world/";
+          },
+        },{id: "post-见天地-见众生-见自己",
+        
+          title: "见天地，见众生，见自己",
+        
+        description: "第一篇博客，记录对人生三见的思考。",
+        section: "Posts",
+        handler: () => {
+          
+            window.location.href = "/blog/2026/see-world-see-self/";
+          
+        },
+      },{id: "awards-全国大学生-竞赛-一等奖",
+          title: '全国大学生××竞赛 一等奖',
+          description: "",
+          section: "Awards",handler: () => {
+              window.location.href = "/awards/1-award-template/";
+            },},{id: "news-正式开启硕士阶段的学习与科研生活-站点同步上线-开始记录",
+          title: '正式开启硕士阶段的学习与科研生活，站点同步上线，开始记录。',
+          description: "",
+          section: "News",},{id: "patents-一种基于-的-方法",
+          title: '一种基于××的××方法',
+          description: "",
+          section: "Patents",handler: () => {
+              window.location.href = "/patents/1-patent-template/";
+            },},{id: "projects-示例项目",
+          title: '示例项目',
+          description: "一句话说明这个项目做什么。这段文字会显示在项目卡片上。",
+          section: "Projects",handler: () => {
+              window.location.href = "/projects/1_project-template/";
+            },},{
+        id: 'social-rss',
+        title: 'RSS Feed',
+        section: 'Socials',
+        handler: () => {
+          window.open("/feed.xml", "_blank");
+        },
+      },{
+      id: 'light-theme',
+      title: 'Change theme to light',
+      description: 'Change the theme of the site to Light',
+      section: 'Theme',
+      handler: () => {
+        setThemeSetting("light");
+      },
+    },
+    {
+      id: 'dark-theme',
+      title: 'Change theme to dark',
+      description: 'Change the theme of the site to Dark',
+      section: 'Theme',
+      handler: () => {
+        setThemeSetting("dark");
+      },
+    },
+    {
+      id: 'system-theme',
+      title: 'Use system default theme',
+      description: 'Change the theme of the site to System Default',
+      section: 'Theme',
+      handler: () => {
+        setThemeSetting("system");
+      },
+    },];
+
+</script> <script src="/assets/al_search/js/shortcut-key.js"></script> </body> </html>
