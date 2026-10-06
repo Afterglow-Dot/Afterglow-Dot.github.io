@@ -75,7 +75,7 @@
    本项目的做法：在 `_pages/world.md` 中用 `data-*` 属性传递结构化数据，
    由 JS 读 `dataset`。不依赖任何 JSON 滤波器。
 
-2. **purgecss 会扫描 `_site/**/*.html` 与 `_site/**/*.js`，只输出压缩 `_site/assets/css/*.css`。**
+2. **purgecss 会扫描 `\_site/**/_.html`与`\_site/\*\*/_.js`，只输出压缩 `\_site/assets/css/\*.css`。\*\*
    因此：
    - 写在页面内联 `<style>` 里的规则**安全**（不在 `assets/css/` 内，不是 purgecss 的 `css` 输入）。
    - 仅由 JS 动态添加、且在 HTML/JS 中不是字符串字面量的 class 名**有被剪的风险**
