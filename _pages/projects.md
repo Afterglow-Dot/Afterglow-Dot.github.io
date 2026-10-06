@@ -9,7 +9,7 @@
 # 否则项目不会显示在这个页面上！
 # ============================================================================
 layout: page
-title: projects
+title: Projects
 permalink: /projects/
 description: 课程项目、科研工作与代码实践。
 nav: true
