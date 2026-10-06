@@ -8,7 +8,7 @@
 # 4. 正文部分可以随便写，支持 Markdown 语法。
 # ============================================================================
 layout: about
-title: About
+title: about
 permalink: /
 subtitle: 合肥工业大学 · 通信工程 · 2026 级硕士
 
@@ -18,7 +18,7 @@ profile:
   image_circular: false # crops the image to make it circular
 
 selected_papers: false # includes a list of papers marked as "selected={true}"（暂时没有论文，先关掉）
-social: false # includes social icons at the bottom of the page
+social: true # includes social icons at the bottom of the page
 
 announcements:
   enabled: true # includes a list of news items
