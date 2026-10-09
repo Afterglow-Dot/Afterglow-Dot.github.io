@@ -6,10 +6,10 @@
 #
 # 下面是正确且安全的写法：
 email:
-  logo: /assets/img/email.svg
+  # logo: /assets/img/email.svg
   url: mailto:2026170686@mail.hfut.edu.cn
 github:
-  logo: /assets/img/github.svg
+  # logo: /assets/img/github.svg
   url: https://github.com/Afterglow-Dot
 
 rss_icon: false # 是否显示 RSS 订阅图标
