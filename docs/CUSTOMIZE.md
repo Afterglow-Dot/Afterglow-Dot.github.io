@@ -8,9 +8,8 @@ Here we will give you some tips on how to customize the website. One important t
 
 - [Customize](#customize)
   - [Project structure](#project-structure)
-    - [Where common files moved in v1.x](#where-common-files-moved-in-v1x)
+    - [Where common files moved in `v1.x`](#where-common-files-moved-in-v1x)
   - [Configuration](#configuration)
-  - [GitHub Copilot Customization Agent](#github-copilot-customization-agent)
     - [What the Agent Can Help With](#what-the-agent-can-help-with)
     - [How to Use the Agent](#how-to-use-the-agent)
     - [Important: Verify Agent Output](#important-verify-agent-output)
@@ -177,16 +176,6 @@ If changes don't appear after refreshing, try:
 - **Use a private/incognito session** to ensure no cached content:
   - [Chrome](https://support.google.com/chrome/answer/95464)
   - [Firefox](https://support.mozilla.org/en-US/kb/private-browsing-use-firefox-without-history)
-
-## GitHub Copilot Customization Agent
-
-This repository includes a specialized GitHub Copilot agent (`.github/agents/customize.agent.md`) designed to help you customize your al-folio website. The agent acts as an expert assistant that can:
-
-- Guide you through common customization tasks step-by-step
-- Modify configuration files, add content, and update your website
-- Explain technical concepts in plain language (especially helpful if you're not familiar with Jekyll or web development)
-- Apply changes directly to your repository files
-- Answer questions about how to customize specific features
 
 ### What the Agent Can Help With
 
