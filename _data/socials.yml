@@ -3,16 +3,7 @@
 # ============================================================================
 # 说明：这些链接会显示在首页底部的社交图标区域。
 # 注意：如果你要启用某个链接，必须写清 logo 字段，否则会导致网站构建失败！
-#
-# 下面是正确且安全的写法：
-# email:
-#   logo: /assets/img/email.svg
-#   url: mailto:2026170686@mail.hfut.edu.cn
-# github:
-#   logo: /assets/img/github.svg
-#   url: https://github.com/Afterglow-Dot
 
-# rss_icon: false # 是否显示 RSS 订阅图标
 email:
   logo: fa-solid fa-envelope
   value: 2026170686@mail.hfut.edu.cn     # 注意是 value，不是 url
@@ -22,4 +13,4 @@ github:
   url: https://github.com/Afterglow-Dot
   title: GitHub
 
-rss_icon: true
+rss_icon: true     # 是否显示 RSS 订阅图标
