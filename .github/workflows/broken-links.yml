@@ -7,7 +7,7 @@ jobs:
   link-checker:
     runs-on: ubuntu-latest
     # only run on the main repo
-    if: github.repository == 'Afterglow-Dot/3D'
+    if: github.repository == 'Afterglow-Dot/Afterglow-Dot.github.io'
     steps:
       - uses: actions/checkout@v4
 
