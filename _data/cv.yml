@@ -1,13 +1,16 @@
 # ============================================================================
 # 个人简历 (CV) 配置
+# 字段需同时兼容两端：RenderCV（生成 PDF）+ al-folio 网页渲染
+# RenderCV 顶层只认：name / headline / location / email / photo / phone /
+#                    website / social_networks / custom_connections / sections
 # ============================================================================
 cv:
   name: 李大杰
-  label: 硕士研究生 · 通信工程
+  headline: 硕士研究生 · 通信工程
   email: 2026170686@mail.hfut.edu.cn
   location: 安徽合肥
-  image: ""
-  summary: 合肥工业大学通信工程专业 2026 级硕士研究生（研一在读）。目前处于课程学习与科研入门阶段，主要关注通信与信号处理方向，正在逐步建立自己的科研笔记与文献阅读体系。
+  # 想给 PDF 加照片就取消下一行注释（路径相对本文件）
+  # photo: ../assets/img/prof_pic.jpg
 
   social_networks:
     - network: GitHub
@@ -15,16 +18,22 @@ cv:
 
   sections:
     # ---------------------------------------------------------------
-    # 在读的条目把 end_date 留空，页面上会显示为“至今”。
+    # 个人简介。用 label/details 写法，网页和 PDF 都能正常显示。
+    # ---------------------------------------------------------------
+    Summary:
+      - label: 个人简介
+        details: 合肥工业大学通信工程专业 2026 级硕士研究生（研一在读）。目前处于课程学习与科研入门阶段，主要关注通信与信号处理方向，正在逐步建立自己的科研笔记与文献阅读体系。
+
+    # ---------------------------------------------------------------
+    # 在读的条目请直接删掉 end_date 这一行（不要写空字符串，RenderCV 不接受）。
     # ---------------------------------------------------------------
     Education:
       - institution: 合肥工业大学 (Hefei University of Technology)
         location: 安徽合肥
         url: https://www.hfut.edu.cn/
         area: 通信工程 (Communication Engineering)
-        studyType: 硕士 (MSc)
+        degree: 硕士 (MSc)
         start_date: 2026-09
-        end_date: ""
         score: ""
         courses: ""
         highlights:
@@ -34,7 +43,7 @@ cv:
         location: 甘肃兰州
         url: "https://www.lzjtu.cn/"
         area: 通信工程 (Communication Engineering)
-        studyType: 本科 (BSc)
+        degree: 本科 (BSc)
         start_date: 2022-09
         end_date: 2026-06
         score: ""
