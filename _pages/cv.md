@@ -11,7 +11,7 @@ permalink: /cv/
 title: CV
 nav: true
 nav_order: 4
-cv_pdf:  # you can also use external links here
+cv_pdf: /assets/rendercv/rendercv_output/Dajie_Li_CV.pdf  # you can also use external links here
 cv_format: rendercv # options: rendercv, jsonresume
 description: 个人简历。
 toc:
