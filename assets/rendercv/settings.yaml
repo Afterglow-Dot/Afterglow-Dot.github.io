@@ -15,11 +15,11 @@ settings:
     # 路径是相对于 _data/cv.yaml 的，不用改
     design: ../assets/rendercv/design.yaml
     locale: ../assets/rendercv/locale.yaml
-    typst_path: ../assets/rendercv/rendercv_output/NAME_IN_SNAKE_CASE_CV.typ
-    pdf_path: ../assets/rendercv/rendercv_output/NAME_IN_SNAKE_CASE_CV.pdf
-    markdown_path: ../assets/rendercv/rendercv_output/NAME_IN_SNAKE_CASE_CV.md
-    html_path: ../assets/rendercv/rendercv_output/NAME_IN_SNAKE_CASE_CV.html
-    png_path: ../assets/rendercv/rendercv_output/NAME_IN_SNAKE_CASE_CV.png
+    typst_path:  ../assets/rendercv/rendercv_output/Dajie_Li_CV.typ
+    pdf_path: ../assets/rendercv/rendercv_output/Dajie_Li_CV.pdf
+    markdown_path: ../assets/rendercv/rendercv_output/Dajie_Li_CV.md
+    html_path: ../assets/rendercv/rendercv_output/Dajie_Li_CV.html
+    png_path: ../assets/rendercv/rendercv_output/Dajie_Li_CV.png
 
     # 是否跳过生成某些格式（true = 跳过，false = 生成）
     dont_generate_markdown: true   # 不生成 Markdown
