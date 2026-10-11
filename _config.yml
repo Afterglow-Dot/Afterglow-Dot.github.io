@@ -220,9 +220,6 @@ include: ["_pages"]
 exclude:
   - al-folio-upgrade-report.md
   - bin/
-  - Dockerfile
-  - docker-compose.yml
-  - docker-compose-slim.yml
   - docs/
   - Gemfile
   - Gemfile.lock
