@@ -5,13 +5,10 @@ cv:
   name: 李大杰
   label: 硕士研究生 · 通信工程
   email: 2026170686@mail.hfut.edu.cn
-  location: 安徽合肥
+  address:
+    region: 安徽合肥
   image: ""
-  summary: 合肥工业大学通信工程专业 2026 级硕士研究生（研一在读）。目前处于课程学习与科研入门阶段，主要关注通信与信号处理方向，正在逐步建立自己的科研笔记与文献阅读体系。
-
-  social_networks:
-    - network: GitHub
-      username: Afterglow-Dot
+  summary: 合肥工业大学通信工程专业 2026 级硕士研究生（研一在读）。目前处于课程学习和科研入门阶段，主要关注信号与信息处理方向，正在逐步建立自己的科研笔记和文献阅读体系。
 
   sections:
     # ---------------------------------------------------------------
@@ -27,8 +24,7 @@ cv:
         end_date: ""
         score: ""
         courses: ""
-        highlights:
-          - 研一在读，课程学习与科研入门阶段。
+        highlights: []
 
       - institution: 兰州交通大学 (Lanzhou Jiaotong University)
         location: 甘肃兰州
@@ -56,10 +52,10 @@ cv:
     # ---------------------------------------------------------------
     # 研究方向 / 兴趣
     # ---------------------------------------------------------------
-    Interests:
-      - name: 通信工程
-        icon: fa-solid fa-tag
-        keywords: "信号处理, 嵌入式系统, FPGA"
+    # Interests:
+    #   - name: 通信工程
+    #     icon: fa-solid fa-tag
+    #     keywords: "信号处理, 嵌入式系统, FPGA"
 
     # ===============================================================
     # 以下分区等你真正有了内容再启用：删掉对应行首的 “#” 即可。
