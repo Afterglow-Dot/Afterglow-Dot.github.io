@@ -1,7 +1,7 @@
 # 我的的个人网站
 
 这是我的个人网站仓库，基于 [al-folio](https://github.com/alshedivat/al-folio) 主题搭建。  
-网站用于记录研究生期间的学习、科研与生活，也会分享课程笔记、代码实践和日常思考。
+网站用于记录研究生期间的学习、科研和生活，也会分享课程笔记、代码实践和日常思考。
 
 - 🌐 网站地址：<https://afterglow-dot.github.io>
 - 📝 定位：研究生在读，通信工程，记录学习与生活。
@@ -18,8 +18,8 @@
 | `_posts/`            | 博客文章和首页短动态                                      |
 | `_projects/`         | 项目展示页面的内容                                        |
 | `_bibliography/`     | 论文 BibTeX 文件（`papers.bib`）                          |
-| `_news/`             | 首页新闻动态（备选，也可以用 `_posts` 的 `inline: true`） |
-| `assets/`            | 图片、CSS、JS、PDF 等静态资源                             |
+| `_news/`             | 首页新闻动态                                               |
+| `assets/`            | 图片、CSS、JS 等静态资源                                    |
 | `.github/workflows/` | GitHub Actions 自动部署配置                               |
 
 ---

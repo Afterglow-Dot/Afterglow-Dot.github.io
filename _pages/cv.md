@@ -5,12 +5,12 @@
 # 你真正的简历内容都在 `_data/cv.yml` 文件里维护！
 # ===========================================================================
 layout: cv
-permalink: /cv/
 title: CV
-nav: true
-nav_order: 4
+permalink: /cv/
+nav: true           #把页面加入导航栏
+nav_order: 5        #导航栏中的位置
 cv_format: rendercv # options: rendercv, jsonresume
-description: 个人简历。
+description: 我的个人简历。
 toc:
   sidebar: left
 ---

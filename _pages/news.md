@@ -8,6 +8,8 @@
 layout: page
 title: News
 permalink: /news/
+nav: true           #把页面加入导航栏
+nav_order: 1        #导航栏中的位置
 ---
 
 {% include news.liquid %}

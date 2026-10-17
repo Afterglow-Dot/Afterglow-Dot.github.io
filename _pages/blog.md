@@ -7,10 +7,10 @@
 # 它代表每页显示几篇文章，改成 10 就会一页显示 10 篇。
 # ============================================================================
 layout: default
-permalink: /blog/
 title: Blog
-nav: true
-nav_order: 1
+permalink: /blog/
+nav: true         #把页面加入导航栏
+nav_order: 2      #导航栏中的位置
 pagination:
   enabled: true
   collection: posts
@@ -19,14 +19,20 @@ pagination:
   sort_field: date
   sort_reverse: true
   trail:
-    before: 1 # The number of links before the current page
-    after: 3 # The number of links after the current page
+    before: 2 # The number of links before the current page
+    after: 2 # The number of links after the current page
 ---
 
 <div class="post">
 
 {% assign blog_name_size = site.blog_name | size %}
 {% assign blog_description_size = site.blog_description | size %}
+{% if blog_name_size > 0 or blog_description_size > 0 %}
+  <div class="header-bar">
+    <h1>{{ site.blog_name }}</h1>
+    <h2>{{ site.blog_description }}</h2>
+  </div>
+{% endif %}
 
 {% if site.display_tags and site.display_tags.size > 0 or site.display_categories and site.display_categories.size > 0 %}
 

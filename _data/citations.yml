@@ -1,10 +1,12 @@
 ﻿# ============================================================================
-# 论文引用量手动配置
+# 论文引用量缓存（Google Scholar）
 # ============================================================================
-# 目前为空，不需要修改。
-# 等你有了论文，如果发现自动获取的引用量不准，可以在这里手动覆盖：
-#
-# "li2027example":       # 对应 papers.bib 里的引用键
-#   google_scholar: 10   # Google Scholar 引用量
-#   semantic_scholar: 5  # Semantic Scholar 引用量
-{}
+# 本文件由 bin/update_scholar_citations.py 自动生成，请勿手动编辑。
+# 结构：metadata.last_updated 记录抓取日期；papers 以 Google Scholar 的
+# author_pub_id（形如 "作者ID:论文ID"）为键，存 citations / title / year。
+# 没有论文时保持 papers: {} 即可，条目留给脚本写入。
+
+metadata:
+  last_updated: '2026-10-01'
+
+papers: {}
