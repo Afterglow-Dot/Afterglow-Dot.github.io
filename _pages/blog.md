@@ -9,7 +9,7 @@
 layout: default
 title: Blog
 permalink: /blog/
-description: "Dajie Li 的博客：记录学习笔记，读书和生活随笔。"
+description: "我的的博客：记录学习笔记，读书和生活随笔。"
 nav: true         #把页面加入导航栏
 nav_order: 2      #导航栏中的位置
 

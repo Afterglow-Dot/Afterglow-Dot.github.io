@@ -11,7 +11,7 @@
 layout: page
 title: Projects
 permalink: /projects/
-description: 课程项目、科研工作与代码实践。
+description: 我的课程项目、科研工作和代码实践。
 nav: true        #把页面加入导航栏
 nav_order: 4     #导航栏中的位置
 display_categories: [work, fun]

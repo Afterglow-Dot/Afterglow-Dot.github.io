@@ -11,7 +11,7 @@ layout: about
 title: About
 permalink: /
 subtitle: 合肥工业大学 · 通信工程 · 2026 级硕士
-description: "Dajie Li 的个人主页：记录学习、科研和生活。"
+description: "我的个人主页：记录学习、科研和生活。"
 
 profile:
   align: right
