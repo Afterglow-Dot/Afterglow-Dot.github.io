@@ -5,14 +5,9 @@ date: 2026-10-01 21:00:00
 description: 第一篇博客，记录对人生三见的思考。
 tags: [随笔, 生活]
 categories: [日常记录]
-og_image: https://afterglow-dot.github.io/assets/img/blog/see-world-cover.jpg
 toc:
   sidebar: left
 ---
-
-<div style="position:absolute;left:-9999px;top:0;width:300px;height:300px;overflow:hidden;">
-  <img src="https://afterglow-dot.github.io/assets/img/blog/see-world-cover.jpg" alt="" width="300" height="300" loading="eager">
-</div>
 
 > 万千繁华，不过三种风景：见天地，见众生，见自己。
 

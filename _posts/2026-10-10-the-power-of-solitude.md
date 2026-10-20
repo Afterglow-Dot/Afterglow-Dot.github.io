@@ -5,14 +5,9 @@ date: 2026-10-10 21:00:00
 description: Reflections on life and the benefits of being alone.
 tags: [Solitude, Life, Reflection, English]
 categories: [Daily Record]
-og_image: https://afterglow-dot.github.io/assets/img/blog/solitude-cover.jpg
 toc:
   sidebar: left
 ---
-
-<div style="position:absolute;left:-9999px;top:0;width:300px;height:300px;overflow:hidden;">
-  <img src="https://afterglow-dot.github.io/assets/img/blog/solitude-cover.jpg" alt="" width="300" height="300" loading="eager">
-</div>
 
 > "Solitude is a time for reflection, for thinking about things more deeply. In a world increasingly focused on speed and competitiveness, solitude is precious and something to be treasured."
 

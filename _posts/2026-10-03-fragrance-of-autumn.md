@@ -5,14 +5,9 @@ date: 2026-10-03 12:00:00
 description: 合肥秋雨后，满城桂花香。
 tags: [随笔, 生活, 秋天, 合肥]
 categories: [日常记录]
-og_image: https://afterglow-dot.github.io/assets/img/blog/osmanthus-cover.jpg
 toc:
   sidebar: left
 ---
-
-<div style="position:absolute;left:-9999px;top:0;width:300px;height:300px;overflow:hidden;">
-  <img src="https://afterglow-dot.github.io/assets/img/blog/osmanthus-cover.jpg" alt="" width="300" height="300" loading="eager">
-</div>
 
 > “忽闻桂花香，方知秋已至，又是一年桂花开，半生风雨自徘徊。”
 
