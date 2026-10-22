@@ -3,30 +3,87 @@
   ---------------------------------------------------------------------------
   · 由 _layouts/default.liquid 在 <body> 开头引入（不是 footer），
     这样 <audio> 尽早存在，媒体请求与页面其余资源并行。
-  · 音频文件：assets/audio/nagisa.mp3（4 分 07 秒，112kbps，约 3.5MB，首尾淡入淡出，已裁掉 3.7s 静音尾）
+  · 音频文件：assets/audio/nagisa.mp3（4 分 07 秒，112kbps，约 3.5MB，
+    首尾淡入淡出，已裁掉 3.7s 静音尾）
   · 曲目：麻枝准 — 渚（《CLANNAD》原声）
-    版权归 Key / Visual Arts。站点公开托管时音频可被任何人直接下载，
-    是否适合公开分发请自行判断。
+    版权归 Key / Visual Arts。站点公开托管时音频可被任何人直接下载。
+  · 交互：♪ 播放/暂停；悬停或键盘聚焦展开音量条（触屏常驻）；🔊/🔇 静音
+  · 存储：bgm-on / bgm-time 用 sessionStorage（关标签页即清）；
+    bgm-vol 用 localStorage（跨会话记住音量）
+  · iOS Safari 的 audio.volume 是只读的，会自动隐藏滑块、只留静音键
   · 换曲目：新文件放进 assets/audio/，改下面 <audio> 里的文件名即可
   · 想彻底关掉：删掉 _layouts/default.liquid 里那行 include
-  · 浏览器禁止有声自动播放，首次进入需要点一下右下角按钮
 {% endcomment %}
 
-<div class="bgm-player" id="bgm-player">
+<div class="bgm-widget" id="bgm-widget">
   <audio id="bgm-audio" src="{{ '/assets/audio/nagisa.mp3' | relative_url }}" loop preload="metadata"></audio>
-  <button id="bgm-btn" type="button" aria-label="背景音乐" aria-pressed="false" title="背景音乐">♪</button>
+
+  <div class="bgm-volume" id="bgm-volume">
+    <input id="bgm-vol" type="range" min="0" max="100" step="1" value="40" aria-label="背景音乐音量" />
+    <button id="bgm-mute" type="button" aria-label="静音" aria-pressed="false">🔊</button>
+  </div>
+
+  <button id="bgm-btn" type="button" aria-label="播放背景音乐" aria-pressed="false" title="背景音乐">
+    ♪
+  </button>
 </div>
 
 <style>
-  .bgm-player {
+  .bgm-widget {
     position: fixed;
     right: 24px;
     bottom: 88px; /* 抬高一格，避开右下角的回到顶部按钮 */
     z-index: 1040;
+    display: flex;
+    flex-direction: row-reverse; /* ♪ 始终贴右，音量面板向左展开 */
+    align-items: center;
+    gap: 8px;
   }
-  .bgm-player[hidden] {
+  /* display:flex 会盖掉 [hidden] 的默认样式，必须显式声明 */
+  .bgm-widget[hidden] {
     display: none;
   }
+
+  /* 音量面板：用 max-width 收放，而不是 display:none —— 后者无法过渡，也无法聚焦 */
+  .bgm-volume {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    max-width: 0;
+    padding: 0;
+    opacity: 0;
+    overflow: hidden;
+    border-radius: 999px;
+    background: var(--global-card-bg-color, #fff);
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.15);
+    transition:
+      max-width 0.25s ease,
+      opacity 0.2s ease,
+      padding 0.25s ease;
+  }
+  .bgm-widget:hover .bgm-volume,
+  .bgm-widget:focus-within .bgm-volume {
+    max-width: 190px;
+    padding: 6px 10px;
+    opacity: 1;
+  }
+
+  #bgm-vol {
+    width: 110px;
+    margin: 0;
+    cursor: pointer;
+    accent-color: var(--global-theme-color, #2a7ae2);
+  }
+
+  #bgm-mute {
+    padding: 2px;
+    border: none;
+    background: transparent;
+    cursor: pointer;
+    font-size: 15px;
+    line-height: 1;
+  }
+
   #bgm-btn {
     width: 44px;
     height: 44px;
@@ -55,6 +112,31 @@
       transform: rotate(360deg);
     }
   }
+
+  /* 触屏没有 hover：面板常驻，宽度收紧 */
+  @media (hover: none) {
+    .bgm-volume {
+      max-width: 130px;
+      padding: 6px 8px;
+      opacity: 1;
+    }
+    #bgm-vol {
+      width: 84px;
+    }
+  }
+
+  /* iOS：volume 只读，滑块无效，收成只留静音键的小胶囊 */
+  .bgm-widget.bgm-no-volume input[type="range"] {
+    display: none;
+  }
+  .bgm-widget.bgm-no-volume .bgm-volume,
+  .bgm-widget.bgm-no-volume:hover .bgm-volume,
+  .bgm-widget.bgm-no-volume:focus-within .bgm-volume {
+    max-width: 52px;
+    padding: 6px 8px;
+    opacity: 1;
+  }
+
   @media (prefers-reduced-motion: reduce) {
     #bgm-btn.is-playing {
       animation: none;
@@ -64,39 +146,58 @@
 
 <script>
   (function () {
-    var wrap = document.getElementById('bgm-player');
+    var widget = document.getElementById('bgm-widget');
     var audio = document.getElementById('bgm-audio');
     var btn = document.getElementById('bgm-btn');
-    if (!wrap || !audio || !btn) return;
+    var volInput = document.getElementById('bgm-vol');
+    var muteBtn = document.getElementById('bgm-mute');
+    if (!widget || !audio || !btn || !volInput || !muteBtn) return;
 
     var ON_KEY = 'bgm-on';
     var TIME_KEY = 'bgm-time';
-    // 隐私模式下 sessionStorage 可能不可用，降级为空实现，避免整段脚本报错
-    var store = (function () {
+    var VOL_KEY = 'bgm-vol';
+
+    // 存储可能被隐私模式禁用，降级为空实现，避免整段脚本报错
+    function safeStore(getter) {
       try {
-        var s = window.sessionStorage;
+        var s = getter.call(window);
         s.setItem('bgm-probe', '1');
         s.removeItem('bgm-probe');
         return s;
       } catch (e) {
         return { getItem: function () { return null; }, setItem: function () {} };
       }
+    }
+    var store = safeStore(function () { return window.sessionStorage; });
+    var volStore = safeStore(function () { return window.localStorage; });
+
+    // 音量：localStorage 优先；默认 0.4（这首 -13.7 LUFS，偏热）
+    var savedVol = parseFloat(volStore.getItem(VOL_KEY));
+    audio.volume = isNaN(savedVol) ? 0.4 : Math.min(1, Math.max(0, savedVol));
+    if (audio.volume === 0) audio.muted = true;
+
+    // iOS Safari 的 volume 是只读的：写进去读不回来。用回读做特性检测，
+    // 检测不通过就隐藏滑块，只保留静音键（muted 在 iOS 上是有效的）。
+    var canSetVolume = (function () {
+      var before = audio.volume;
+      var ok;
+      audio.volume = 0.5;
+      ok = Math.abs(audio.volume - 0.5) < 0.01;
+      audio.volume = before;
+      return ok;
     })();
+    if (!canSetVolume) widget.classList.add('bgm-no-volume');
 
-    audio.volume = 0.6; // 背景音量，0~1，嫌吵就调小
-
-    // 已经在听的人：把整首预取进 HTTP 缓存。换页后要 seek 到中间位置，
-    // 缓存命中就不必再等那一小段下载，重缓冲几乎消失。
-    // 没听过的人保持 metadata，不为一个没点的按钮浪费 3.5MB 带宽。
+    // 已经在听的人：把整首预取进 HTTP 缓存，换页 seek 命中本地字节，
+    // 重缓冲几乎消失。没听过的人保持 metadata，不浪费 3.5MB 带宽。
     if (store.getItem(ON_KEY) === '1') {
       audio.preload = 'auto';
     }
 
     var metaReady = false;
 
-    // 按钮默认就是可见的：iOS Safari 常忽略 preload，元数据可能要等用户点击后才加载，
-    // 若把显示与否绑定在 loadedmetadata 上，iPhone 上按钮会永远不出现。
-    // 因此只在真正加载失败时隐藏。
+    // 按钮默认可见：iOS 常忽略 preload，元数据可能要等用户点击才加载，
+    // 若把显示与否绑在 loadedmetadata 上，iPhone 上按钮会永远不出现。
     function onMeta() {
       if (metaReady) return;
       metaReady = true;
@@ -107,13 +208,14 @@
     }
 
     audio.addEventListener('error', function () {
-      wrap.hidden = true;
+      widget.hidden = true;
       console.warn('[bgm] 音频加载失败，播放器已隐藏：' + (audio.currentSrc || audio.src));
     });
 
     function setPlaying(on) {
       btn.classList.toggle('is-playing', on);
       btn.setAttribute('aria-pressed', on ? 'true' : 'false');
+      btn.setAttribute('aria-label', on ? '暂停背景音乐' : '播放背景音乐');
       store.setItem(ON_KEY, on ? '1' : '0');
     }
 
@@ -141,12 +243,40 @@
       }
     });
 
+    // 音量条：input 实时改音量，change（松手）才落盘，避免拖动时频繁写存储
+    volInput.addEventListener('input', function () {
+      var v = volInput.value / 100;
+      audio.volume = v;
+      audio.muted = v === 0;
+    });
+    volInput.addEventListener('change', function () {
+      volStore.setItem(VOL_KEY, audio.volume);
+    });
+
+    muteBtn.addEventListener('click', function () {
+      audio.muted = !audio.muted;
+    });
+
+    // 统一状态同步：拖滑块、点静音、系统静音都会走这里
+    function syncVolumeUI() {
+      var v = audio.muted ? 0 : audio.volume;
+      volInput.value = Math.round(v * 100);
+      muteBtn.setAttribute('aria-pressed', audio.muted ? 'true' : 'false');
+      muteBtn.setAttribute('aria-label', audio.muted ? '取消静音' : '静音');
+      muteBtn.textContent = audio.muted ? '🔇' : '🔊';
+    }
+    audio.addEventListener('volumechange', syncVolumeUI);
+    // 显式同步一次：初值来自 localStorage，可能和 markup 里写死的 40 不同；
+    // 且前面设 volume/muted 时监听器还没注册，那些事件的回调并不保证能收到。
+    syncVolumeUI();
+
     // 记录进度：sessionStorage 按标签页隔离，关掉标签页即清空
     audio.addEventListener('timeupdate', function () {
       store.setItem(TIME_KEY, audio.currentTime.toFixed(1));
     });
     window.addEventListener('pagehide', function () {
       if (!audio.paused) store.setItem(TIME_KEY, audio.currentTime.toFixed(1));
+      volStore.setItem(VOL_KEY, audio.volume);
     });
 
     // 兼容两种情况：元数据已就绪（命中缓存），或稍后才加载完
