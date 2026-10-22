@@ -1,12 +1,14 @@
 {% comment %}
   全站背景音乐播放器
   ---------------------------------------------------------------------------
-  · 音频文件：assets/audio/nagisa.mp3（4 分 10 秒，128kbps，约 4.1MB）
+  · 由 _layouts/default.liquid 在 <body> 开头引入（不是 footer），
+    这样 <audio> 尽早存在，媒体请求与页面其余资源并行。
+  · 音频文件：assets/audio/nagisa.mp3（4 分 07 秒，112kbps，约 3.5MB，首尾淡入淡出，已裁掉 3.7s 静音尾）
   · 曲目：麻枝准 — 渚（《CLANNAD》原声）
     版权归 Key / Visual Arts。站点公开托管时音频可被任何人直接下载，
     是否适合公开分发请自行判断。
   · 换曲目：新文件放进 assets/audio/，改下面 <audio> 里的文件名即可
-  · 想彻底关掉：删掉 _includes/footer.liquid 末尾那行 include
+  · 想彻底关掉：删掉 _layouts/default.liquid 里那行 include
   · 浏览器禁止有声自动播放，首次进入需要点一下右下角按钮
 {% endcomment %}
 
@@ -82,6 +84,13 @@
     })();
 
     audio.volume = 0.6; // 背景音量，0~1，嫌吵就调小
+
+    // 已经在听的人：把整首预取进 HTTP 缓存。换页后要 seek 到中间位置，
+    // 缓存命中就不必再等那一小段下载，重缓冲几乎消失。
+    // 没听过的人保持 metadata，不为一个没点的按钮浪费 3.5MB 带宽。
+    if (store.getItem(ON_KEY) === '1') {
+      audio.preload = 'auto';
+    }
 
     var metaReady = false;
 
