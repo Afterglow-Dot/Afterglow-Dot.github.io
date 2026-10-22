@@ -17,7 +17,8 @@ jobs:
       - name: Setup Ruby
         uses: ruby/setup-ruby@v1
         with:
-          ruby-version: "3.2.2"
+          # 与 deploy.yml 保持一致，且不写死补丁号（新 runner 镜像只提供各系列最新补丁版）
+          ruby-version: "3.3"
           bundler-cache: true
       - name: Update _config.yml ⚙️
         uses: fjogeleit/yaml-update-action@main

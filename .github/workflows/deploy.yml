@@ -54,7 +54,10 @@ jobs:
       - name: Setup Ruby 💎
         uses: ruby/setup-ruby@v1
         with:
-          ruby-version: "3.3.5"
+          # 锁到次版本号（3.3），由 setup-ruby 取该系列最新补丁版。
+          # 写死补丁号（如 3.3.5）在 runner 镜像升级后会 404：
+          # 新镜像只为每个系列构建最新补丁版。
+          ruby-version: "3.3"
           bundler-cache: true
       - name: Setup Python 🐍
         uses: actions/setup-python@v5
