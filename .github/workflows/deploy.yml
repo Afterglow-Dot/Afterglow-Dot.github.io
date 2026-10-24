@@ -15,7 +15,6 @@ on:
       - "**.yml"
       - "Gemfile"
       - "Gemfile.lock"
-      - "!.github/workflows/broken-links-site.yml"
       - "!lighthouse_results/**"
       - "!docs/CUSTOMIZE.md"
       - "!docs/FAQ.md"
@@ -34,7 +33,6 @@ on:
       - "**.yml"
       - "Gemfile"
       - "Gemfile.lock"
-      - "!.github/workflows/broken-links-site.yml"
       - "!lighthouse_results/**"
       - "!docs/CUSTOMIZE.md"
       - "!docs/FAQ.md"
@@ -44,10 +42,16 @@ on:
 permissions:
   contents: write
 
+concurrency:
+  group: deploy-${{ github.ref }}
+  cancel-in-progress: true
+
 jobs:
   deploy:
     # available images: https://github.com/actions/runner-images#available-images
     runs-on: ubuntu-latest
+    timeout-minutes: 20
+
     steps:
       - name: Checkout 🛎️
         uses: actions/checkout@v4
@@ -59,18 +63,10 @@ jobs:
           # 新镜像只为每个系列构建最新补丁版。
           ruby-version: "3.3"
           bundler-cache: true
-      - name: Setup Python 🐍
-        uses: actions/setup-python@v5
-        with:
-          python-version: "3.13"
-          cache: "pip" # caching pip dependencies
       - name: Setup Node 🧰
         uses: actions/setup-node@v4
         with:
           node-version: "20"
-          cache: "npm"
-      - name: Install JS deps 📦
-        run: npm ci
       - name: Update _config.yml ⚙️
         uses: fjogeleit/yaml-update-action@main
         with:
@@ -81,13 +77,21 @@ jobs:
       - name: Install and Build 🔧
         run: |
           sudo apt-get update && sudo apt-get install -y imagemagick
-          pip3 install --upgrade nbconvert
           export JEKYLL_ENV=production
           bundle exec jekyll build
       - name: Purge unused CSS 🧹
         run: |
           npm install -g purgecss
           purgecss -c purgecss.config.js
+      - name: Check for broken links 🔗
+        if: github.event_name != 'pull_request'
+        uses: lycheeverse/lychee-action@v2.0.2
+        with:
+          fail: true
+          # 只检查站内链接（_site 已构建完成，无需联网）
+          args: >-
+            --offline --remap '_site(/?.*)/assets/(.*) _site/assets/$2'
+            --verbose --no-progress '_site/**/*.html'
       - name: Deploy 🚀
         if: github.event_name != 'pull_request'
         uses: JamesIves/github-pages-deploy-action@v4

@@ -202,14 +202,10 @@ kramdown:
 # Includes & excludes
 include: ["_pages"]
 exclude:
-  - al-folio-upgrade-report.md
   - bin/
   - docs/
   - Gemfile
   - Gemfile.lock
-  - lighthouse_results/
-  - package.json
-  - package-lock.json
   - purgecss.config.js
   - README.md
   - vendor
