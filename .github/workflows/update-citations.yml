@@ -12,7 +12,8 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
-      # See docs/CUSTOMIZE.md for details on how to set up PAT for triggering subsequent workflows
+      # See https://github.com/alshedivat/al-folio/blob/main/docs/CUSTOMIZE.md for details
+      # on how to set up a PAT for triggering subsequent workflows
       #        with:
       #          token: ${{ secrets.PAT }}
 

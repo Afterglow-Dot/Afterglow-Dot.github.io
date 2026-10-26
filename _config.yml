@@ -31,14 +31,16 @@ repo_theme_dark: dark # https://github.com/stats-organization/github-stats-exten
 # Off by default: addresses are then split at build time so the HTML contains no
 # `user@host` and no `mailto:` for harvesters to scrape, and clicking one copies
 # it to the clipboard instead of opening a mail client.
-# See "Protecting email addresses from scrapers" in docs/CUSTOMIZE.md.
+# See "Protecting email addresses from scrapers" in the theme's documentation:
+# https://github.com/alshedivat/al-folio/blob/main/docs/CUSTOMIZE.md
 protect_email: true
 
 # Off by default: the free public github-profile-trophy instance is disabled
 # (its Vercel deployment answers HTTP 402 / DEPLOYMENT_DISABLED), so every trophy
 # image 404s. The project itself is still open source and free — self-host it and
 # point external_services.github_profile_trophy_url at your instance, then set
-# enabled: true. See docs/CUSTOMIZE.md.
+# enabled: true. See the theme's documentation:
+# https://github.com/alshedivat/al-folio/blob/main/docs/CUSTOMIZE.md
 repo_trophies:
   enabled: false
   theme_light: flat # https://github.com/ryo-ma/github-profile-trophy
@@ -203,7 +205,6 @@ kramdown:
 include: ["_pages"]
 exclude:
   - bin/
-  - docs/
   - Gemfile
   - Gemfile.lock
   - purgecss.config.js
