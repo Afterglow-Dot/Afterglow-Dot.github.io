@@ -443,6 +443,19 @@ enable_progressbar: true # enables a horizontal progress bar linked to the verti
 enable_video_embedding: false # enables video embedding for bibtex entries. If false, the button opens the video link in a new window.
 
 # -----------------------------------------------------------------------------
+# 背景音乐
+# -----------------------------------------------------------------------------
+# 换曲目：把文件放进 assets/audio/，改这里的 track 即可，不用动代码。
+# 关掉整个功能：enabled 设为 false（模板里的 include 和脚本都会跳过）。
+
+music:
+  enabled: true
+  track: /assets/audio/nagisa.mp3
+  title: 渚
+  artist: 麻枝准 · CLANNAD OST
+  default_volume: 40 # 0-100，首次访问的初始音量；之后以上次保存的为准
+
+# -----------------------------------------------------------------------------
 # Library versions
 # -----------------------------------------------------------------------------
 
