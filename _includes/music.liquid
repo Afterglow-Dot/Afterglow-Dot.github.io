@@ -1,0 +1,66 @@
+{% comment %}
+  全站背景音乐播放器 —— 标记部分
+  ---------------------------------------------------------------------------
+  · 由 _includes/header.liquid 在导航栏里引入（紧跟在折叠按钮之后），
+    因此每一页（含文章页、404）都会出现，不依赖 JS 生成。
+  · 不用 <li> 包：它必须在 #navbarNav 折叠区之外，否则手机上要先点汉堡才看得到。
+  · 音频走 _config.yml 的 music.track，换曲目只改配置。
+  · 逻辑在 assets/js/music.js，样式在 assets/music/music.css
+    （刻意不放在 assets/css/，那里会被 purgecss 重写）。
+{% endcomment %}
+{% if site.music.enabled %}
+  {% comment %}
+    样式在这里引入而不是 head.liquid：一是少复制一份主题的 head.liquid，
+    二是它紧跟在本组件前面，解析到按钮时样式已就绪，不会闪一下未样式化的按钮。
+  {% endcomment %}
+  <link rel="stylesheet" href="{{ '/assets/music/music.css' | relative_url | bust_file_cache }}" />
+
+  <div class="music-dock" id="music-dock" data-state="idle">
+    <audio
+      id="music-audio"
+      src="{{ site.music.track | relative_url | bust_file_cache }}"
+      loop
+      preload="metadata"
+      data-default-volume="{{ site.music.default_volume | default: 40 }}"
+    ></audio>
+
+    <button
+      class="music-trigger"
+      id="music-trigger"
+      type="button"
+      aria-label="背景音乐"
+      aria-expanded="false"
+      aria-controls="music-panel"
+      title="背景音乐"
+    >
+      <i class="fa-solid fa-music" aria-hidden="true"></i>
+    </button>
+
+    <div class="music-panel" id="music-panel" hidden>
+      <p class="music-song">{{ site.music.title }}</p>
+      <p class="music-artist">{{ site.music.artist }}</p>
+
+      <button class="music-play" id="music-play" type="button">播放</button>
+
+      <p class="music-meta">
+        <span class="music-state" id="music-state" aria-live="polite">背景音乐</span>
+        <span class="music-time"><span id="music-time">0:00</span> / <span id="music-duration">0:00</span></span>
+      </p>
+
+      <div class="music-vol">
+        <span>音量</span>
+        <input id="music-volume" type="range" min="0" max="100" step="1" value="{{ site.music.default_volume | default: 40 }}" aria-label="音量" />
+        <button class="music-mute" id="music-mute" type="button" aria-label="静音" aria-pressed="false">🔊</button>
+        <output id="music-volume-out" for="music-volume">{{ site.music.default_volume | default: 40 }}%</output>
+      </div>
+
+      <p class="music-loop"><i class="fa-solid fa-repeat" aria-hidden="true"></i> 单曲循环</p>
+    </div>
+
+    <div class="music-notice" id="music-notice" hidden>
+      <p id="music-notice-text">点一下页面任意位置，即可继续播放背景音乐。</p>
+      <button id="music-notice-action" type="button">播放</button>
+      <button id="music-notice-close" type="button" aria-label="收起提示">×</button>
+    </div>
+  </div>
+{% endif %}
