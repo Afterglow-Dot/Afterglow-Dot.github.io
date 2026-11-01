@@ -1,0 +1,289 @@
+/* 全站背景音乐 —— 导航栏音符 + 下拉面板
+ * -----------------------------------------------------------------------------
+ * 放在 assets/music/ 而不是 assets/css/：purgecss 只重写 _site/assets/css/*.css，
+ * 这里不在它的通配范围里，类名不会被当成「未使用」删掉。
+ * 颜色全部走主题变量，亮/暗色自动跟随。
+ */
+
+/* ---------- 挂载点 ---------- */
+.music-dock {
+  position: relative;
+  display: flex;
+  align-items: center;
+  flex: 0 0 auto;
+  margin-left: 0.35rem;
+}
+
+/* 只有宽屏才把音符移到导航菜单之后。
+   窄屏必须保持它在 DOM 里的位置（汉堡按钮之后、折叠区之前）：
+   .navbar 是 flex-wrap:wrap，折叠区展开时 flex-basis 为 100% 会独占一行，
+   若音符的 order 比它大，就会被挤到菜单下方的第三行单独一行。 */
+@media (min-width: 576px) {
+  .music-dock {
+    order: 4;
+  }
+}
+
+.music-dock audio {
+  display: none;
+}
+
+/* ---------- 音符按钮 ---------- */
+.music-trigger {
+  display: grid;
+  place-items: center;
+  width: 34px;
+  height: 34px;
+  padding: 0;
+  border: 0;
+  border-radius: 50%;
+  background: transparent;
+  color: var(--global-text-color);
+  font-size: 0.95rem;
+  line-height: 1;
+  cursor: pointer;
+  transition:
+    color 0.2s ease,
+    background-color 0.2s ease;
+}
+
+.music-trigger:hover,
+.music-trigger:focus-visible {
+  color: var(--global-theme-color);
+  background: var(--global-divider-color);
+}
+
+.music-trigger:focus-visible {
+  outline: 2px solid var(--global-theme-color);
+  outline-offset: 2px;
+}
+
+.music-dock[data-state="playing"] .music-trigger {
+  color: var(--global-theme-color);
+}
+
+/* 播放中给一圈呼吸感，纯装饰，减弱动效时关掉 */
+.music-dock[data-state="playing"] .music-trigger::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  border: 1px solid var(--global-theme-color);
+  opacity: 0.5;
+  animation: music-pulse 2.4s ease-out infinite;
+  pointer-events: none;
+}
+
+@keyframes music-pulse {
+  0% {
+    transform: scale(1);
+    opacity: 0.5;
+  }
+  70% {
+    transform: scale(1.45);
+    opacity: 0;
+  }
+  100% {
+    transform: scale(1.45);
+    opacity: 0;
+  }
+}
+
+/* ---------- 面板 ---------- */
+.music-panel {
+  position: absolute;
+  top: calc(100% + 12px);
+  right: 0;
+  z-index: 1040;
+  width: min(268px, calc(100vw - 32px));
+  box-sizing: border-box;
+  padding: 14px 16px 12px;
+  border: 1px solid var(--global-divider-color);
+  border-radius: 14px;
+  background: var(--global-card-bg-color);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.18);
+  color: var(--global-text-color);
+  text-align: left;
+}
+
+.music-panel[hidden],
+.music-notice[hidden] {
+  display: none;
+}
+
+.music-song {
+  margin: 0;
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--global-text-color);
+}
+
+.music-artist {
+  margin: 2px 0 12px;
+  font-size: 0.75rem;
+  color: var(--global-text-color-light);
+}
+
+.music-play {
+  display: block;
+  width: 100%;
+  padding: 8px 12px;
+  border: 0;
+  border-radius: 8px;
+  background: var(--global-theme-color);
+  color: #fff;
+  font-size: 0.85rem;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.music-play:hover,
+.music-play:focus-visible {
+  filter: brightness(1.08);
+}
+
+.music-play:focus-visible {
+  outline: 2px solid var(--global-text-color);
+  outline-offset: 2px;
+}
+
+.music-meta {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 8px;
+  margin: 10px 0 0;
+  font-size: 0.72rem;
+  color: var(--global-text-color-light);
+}
+
+.music-time {
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+
+.music-vol {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin: 10px 0 0;
+  font-size: 0.75rem;
+  color: var(--global-text-color-light);
+}
+
+.music-vol input[type="range"] {
+  flex: 1 1 auto;
+  min-width: 0;
+  margin: 0;
+  accent-color: var(--global-theme-color);
+  cursor: pointer;
+}
+
+.music-vol output {
+  min-width: 34px;
+  font-size: 0.72rem;
+  font-variant-numeric: tabular-nums;
+  text-align: right;
+}
+
+.music-mute {
+  padding: 0 2px;
+  border: 0;
+  background: transparent;
+  font-size: 0.85rem;
+  line-height: 1;
+  cursor: pointer;
+}
+
+.music-mute[aria-pressed="true"] {
+  opacity: 0.45;
+}
+
+/* iOS：volume 只读，滑块无效，收成只留静音键 */
+.music-dock.no-volume .music-vol input[type="range"] {
+  display: none;
+}
+
+.music-loop {
+  margin: 10px 0 0;
+  font-size: 0.7rem;
+  color: var(--global-text-color-light);
+}
+
+/* ---------- 被拦截时的小提示 ---------- */
+.music-notice {
+  position: absolute;
+  top: calc(100% + 12px);
+  right: 0;
+  z-index: 1050;
+  width: min(240px, calc(100vw - 32px));
+  box-sizing: border-box;
+  padding: 12px 30px 12px 14px;
+  border: 1px solid var(--global-divider-color);
+  border-radius: 12px;
+  background: var(--global-card-bg-color);
+  box-shadow: 0 10px 26px rgba(0, 0, 0, 0.16);
+  color: var(--global-text-color);
+}
+
+.music-notice p {
+  margin: 0 0 8px;
+  font-size: 0.72rem;
+  line-height: 1.6;
+  color: var(--global-text-color-light);
+}
+
+.music-notice button {
+  font-size: 0.72rem;
+}
+
+#music-notice-action {
+  padding: 4px 12px;
+  border: 1px solid var(--global-divider-color);
+  border-radius: 6px;
+  background: transparent;
+  color: var(--global-text-color);
+  cursor: pointer;
+}
+
+#music-notice-action:hover {
+  border-color: var(--global-theme-color);
+  color: var(--global-theme-color);
+}
+
+#music-notice-close {
+  position: absolute;
+  top: 4px;
+  right: 4px;
+  width: 22px;
+  height: 22px;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: var(--global-text-color-light);
+  font-size: 1rem;
+  line-height: 1;
+  cursor: pointer;
+}
+
+/* ---------- 小屏 ---------- */
+@media (max-width: 575.98px) {
+  .music-trigger {
+    width: 30px;
+    height: 30px;
+    font-size: 0.85rem;
+  }
+  .music-dock {
+    margin-left: 0.15rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .music-dock[data-state="playing"] .music-trigger::after {
+    animation: none;
+    opacity: 0;
+  }
+  .music-trigger {
+    transition: none;
+  }
+}
