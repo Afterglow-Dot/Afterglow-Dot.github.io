@@ -450,7 +450,7 @@ enable_video_embedding: false # enables video embedding for bibtex entries. If f
 
 music:
   enabled: true
-  track: /assets/audio/nagisa.mp3
+  track: /assets/music/nagisa.mp3
   title: 渚
   artist: 麻枝准 · CLANNAD OST
   default_volume: 40 # 0-100，首次访问的初始音量；之后以上次保存的为准

@@ -73,6 +73,7 @@
   var awaiting = false;
   var noticeTimer = null;
   var lastSaved = -1;
+  var warmed = false;
 
   var fallbackVol = parseInt(audio.getAttribute("data-default-volume"), 10);
   if (isNaN(fallbackVol)) fallbackVol = 40;
@@ -273,6 +274,29 @@
   }
 
   /* ---- 音频事件 ---- */
+
+  /* 首次真正播出声后，把整首灌进 HTTP 缓存：
+     preload 只对"开始加载前"有约束，播放中改它不会多下字节，
+     所以真正管用的是主动 fetch 一遍。之后循环回到 0:00 直接命中本地缓存，
+     不需要再发请求，弱网或连接被中间设备断掉时也不会卡住。 */
+  function warmCache() {
+    if (warmed) return;
+    warmed = true;
+    try {
+      audio.preload = "auto";
+    } catch (e) {
+      /* 忽略 */
+    }
+    try {
+      if (window.fetch) {
+        var url = audio.currentSrc || audio.src;
+        if (url) window.fetch(url, { cache: "force-cache" }).catch(function () {});
+      }
+    } catch (e) {
+      /* 忽略 */
+    }
+  }
+
   audio.addEventListener("loadedmetadata", function () {
     var resume = parseFloat(read(KEY_TIME, ss));
     if (!isNaN(resume) && resume > 0 && isFinite(audio.duration) && resume < audio.duration - 1.5) {
@@ -293,6 +317,19 @@
     clearGesture();
     hideNotice();
     setState("playing");
+    warmCache();
+  });
+
+  /* loop 在个别环境下不生效（老 Safari、MSE、元素被重新插入 DOM）时的兜底：
+     正常带 loop 的元素永远不会触发 ended，所以这段只在 loop 失效时才跑。 */
+  audio.addEventListener("ended", function () {
+    if (!wanted) return;
+    try {
+      audio.currentTime = 0;
+    } catch (e) {
+      /* 忽略 */
+    }
+    play(false);
   });
 
   audio.addEventListener("waiting", function () {
@@ -300,6 +337,9 @@
   });
 
   audio.addEventListener("pause", function () {
+    /* 播到末尾时浏览器会补一个 pause，那是自然结束，不是用户想关；
+       而且不同引擎里 pause / ended 的先后不一致，用 ended 标志判断最稳 */
+    if (audio.ended) return;
     /* 自动播放被拒时浏览器也会补一个 pause，那不代表用户想关 */
     if (wanted && (state === "loading" || state === "blocked")) return;
     if (state === "error") return;
