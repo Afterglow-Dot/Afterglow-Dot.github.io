@@ -5,8 +5,7 @@
     因此每一页（含文章页、404）都会出现，不依赖 JS 生成。
   · 不用 <li> 包：它必须在 #navbarNav 折叠区之外，否则手机上要先点汉堡才看得到。
   · 音频走 _config.yml 的 music.track，换曲目只改配置。
-  · 逻辑在 assets/js/music.js，样式在 assets/music/music.css
-    （刻意不放在 assets/css/，那里会被 purgecss 重写）。
+  · 逻辑在 assets/music/music.js，样式在 assets/music/music.css。
 {% endcomment %}
 {% if site.music.enabled %}
   {% comment %}
