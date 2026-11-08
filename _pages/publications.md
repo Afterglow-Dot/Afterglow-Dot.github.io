@@ -20,7 +20,7 @@ nav_order: 4        #导航栏中的位置
 
 {% include bib_search.liquid %}
 
-<div class="Publications">
+<div class="publications">
 
 {% bibliography %}
 
