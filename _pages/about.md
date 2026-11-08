@@ -15,7 +15,7 @@ description: "我的个人主页：记录学习、科研和生活。"
 
 profile:
   align: right
-  image: prof_pic.jpg
+  image: avatar.jpg
   image_circular: true # crops the image to make it circular
 
 selected_papers: false # includes a list of papers marked as "selected={true}"（暂时没有论文，先关掉）
