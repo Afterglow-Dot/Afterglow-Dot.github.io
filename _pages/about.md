@@ -1,12 +1,4 @@
 ---
-# ============================================================================
-# 个人主页（首页）配置
-# ============================================================================
-# 1. 修改 subtitle 可以改变副标题（比如你的学校和专业）。
-# 2. 把头像图片命名为 prof_pic.jpg，放到 assets/img/ 目录下。
-# 3. selected_papers 暂时设为 false。
-# 4. 正文部分可以随便写，支持 Markdown 语法。
-# ============================================================================
 layout: about
 title: About
 permalink: /
@@ -18,17 +10,17 @@ profile:
   image: avatar.jpg
   image_circular: true # crops the image to make it circular
 
-selected_papers: false # includes a list of papers marked as "selected={true}"（暂时没有论文，先关掉）
+selected_papers: false # includes a list of papers marked as "selected={true}"
 social: false # includes social icons at the bottom of the page
 
 announcements:
   enabled: true # includes a list of news items
-  scrollable: true # adds a vertical scroll bar if there are more than 3 news items
+  scrollable: true # adds a vertical scroll bar if there are more than 5 news items
   limit: 5 # leave blank to include all the news in the `_news` folder
 
 latest_posts:
   enabled: true
-  scrollable: true # adds a vertical scroll bar if there are more than 3 new posts items
+  scrollable: true # adds a vertical scroll bar if there are more than 5 new posts items
   limit: 5 # leave blank to include all the blog posts
 ---
 

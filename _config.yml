@@ -25,33 +25,12 @@ back_to_top: true # set to false to disable the back to top button
 # Theme
 # -----------------------------------------------------------------------------
 
-# repo color theme
-repo_theme_light: default # https://github.com/stats-organization/github-stats-extended/blob/master/packages/core/src/themes/README.md
-repo_theme_dark: dark # https://github.com/stats-organization/github-stats-extended/blob/master/packages/core/src/themes/README.md
 # Off by default: addresses are then split at build time so the HTML contains no
 # `user@host` and no `mailto:` for harvesters to scrape, and clicking one copies
 # it to the clipboard instead of opening a mail client.
 # See "Protecting email addresses from scrapers" in the theme's documentation:
 # https://github.com/alshedivat/al-folio/blob/main/docs/CUSTOMIZE.md
 protect_email: true
-
-# Off by default: the free public github-profile-trophy instance is disabled
-# (its Vercel deployment answers HTTP 402 / DEPLOYMENT_DISABLED), so every trophy
-# image 404s. The project itself is still open source and free — self-host it and
-# point external_services.github_profile_trophy_url at your instance, then set
-# enabled: true. See the theme's documentation:
-# https://github.com/alshedivat/al-folio/blob/main/docs/CUSTOMIZE.md
-repo_trophies:
-  enabled: false
-  theme_light: flat # https://github.com/ryo-ma/github-profile-trophy
-  theme_dark: gitdimmed # https://github.com/ryo-ma/github-profile-trophy
-
-# External service URLs for repository page
-# To use a different instance or service for displaying GitHub stats and trophies,
-# update these URLs. These are used in the repository templates.
-external_services:
-  github_readme_stats_url: https://github-stats-extended.vercel.app
-  github_profile_trophy_url: https://github-profile-trophy.vercel.app
 
 # -----------------------------------------------------------------------------
 # al-folio API (v1.x)
@@ -147,22 +126,6 @@ related_blog_posts:
   enabled: true
   max_related: 5
 
-# Giscus comments (RECOMMENDED)
-# Follow instructions on https://giscus.app/ to setup for your repo to fill out the information below.
-giscus:
-  repo: # <your-github-user-name>/<your-github-repo-name>
-  repo_id: # leave empty or specify your repo_id (see https://giscus.app/)
-  category: Comments # name of the category under which discussions will be created
-  category_id: # leave empty or specify your category_id (see https://giscus.app/)
-  mapping: title # identify discussions by post title
-  strict: 1 # use strict identification mode
-  reactions_enabled: 1 # enable (1) or disable (0) emoji reactions
-  input_position: bottom # whether to display input form below (bottom) or above (top) the comments
-  dark_theme: dark # name of the dark color scheme (preferred works well with al-folio dark mode)
-  light_theme: light # name of the light color scheme (preferred works well with al-folio light mode)
-  emit_metadata: 0
-  lang: zh-CN
-
 # -----------------------------------------------------------------------------
 # Newsletter
 # -----------------------------------------------------------------------------
@@ -204,10 +167,8 @@ kramdown:
 # Includes & excludes
 include: ["_pages"]
 exclude:
-  - bin/
   - Gemfile
   - Gemfile.lock
-  - purgecss.config.js
   - README.md
   - vendor
 keep_files:
@@ -249,7 +210,6 @@ plugins:
   - al_folio_bootstrap_compat
   - al_cookie
   - al_analytics
-  - al_citations
   - al_ext_posts
   - al_img_tools
   - al_search
@@ -445,7 +405,7 @@ enable_video_embedding: false # enables video embedding for bibtex entries. If f
 # -----------------------------------------------------------------------------
 # 背景音乐
 # -----------------------------------------------------------------------------
-# 换曲目：把文件放进 assets/audio/，改这里的 track 即可，不用动代码。
+# 换曲目：把文件放进 assets/music/，改这里的 track 即可，不用动代码。
 # 关掉整个功能：enabled 设为 false（模板里的 include 和脚本都会跳过）。
 
 music:

@@ -1,16 +1,22 @@
-_site
-.bundle
-.DS_Store
-.idea
-.jekyll-cache
+# 构建产物与缓存
+_site/
+.jekyll-cache/
 .jekyll-metadata
-.ruby-version
-.sass-cache
-.tweet-cache
-.venv
-node_modules/
-vendor
+.sass-cache/
+.tweet-cache/
 
-# Python bytecode from bin/ helper scripts
+# 依赖与工具
+.bundle/
+vendor/
+.venv/
+node_modules/
 __pycache__/
 *.pyc
+
+# 系统与编辑器
+.DS_Store
+Thumbs.db
+Desktop.ini
+.idea/
+.vscode/
+*.log
