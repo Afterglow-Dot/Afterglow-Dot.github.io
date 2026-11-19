@@ -1,44 +1,46 @@
-# 我的个人网站
+# My Personal Website
 
-这是我的个人网站仓库，基于 [al-folio](https://github.com/alshedivat/al-folio) 主题搭建。  
-网站用于记录研究生期间的学习、科研和生活，也会分享课程笔记、代码实践和日常思考。
+**[English](README.md)** | [简体中文](README.zh-CN.md)
 
-- 🌐 网站地址：<https://afterglow-dot.github.io>
-- 📝 定位：研究生在读，通信工程，记录学习与生活。
+This is the repository for my personal website, built with the [al-folio](https://github.com/alshedivat/al-folio) theme.  
+The site records my study, research, and life during graduate school, and also shares course notes, coding practice, and everyday reflections.
 
----
-
-## 📁 项目结构
-
-| 目录 / 文件          | 作用                                                      |
-| :------------------- | :-------------------------------------------------------- |
-| `_config.yml`        | 网站全局配置：标题、作者、URL、社交链接、插件等             |
-| `_data/`             | 数据文件：社交链接、简历、期刊缩写                          |
-| `_pages/`            | 固定页面：关于我、最新动态、博客、简历、项目、论文等         |
-| `_news/`             | 首页新闻动态                                              |
-| `_posts/`            | 博客文章                                                  |
-| `_projects/`         | 展示项目的内容                                            |
-| `_bibliography/`     | 论文 BibTeX 文件                                          |
-| `assets/`            | 图片、音频等静态资源                                       |
-| `.github/workflows/` | GitHub Actions 构建与部署配置                              |
+- 🌐 Website: <https://afterglow-dot.github.io>
+- 📝 About: A graduate student in Communication Engineering, writing about study and life.
 
 ---
 
-## 🚀 部署方式
+## 📁 Project Structure
 
-每次向 `main` 分支推送代码，GitHub Actions 都会自动构建网站并发布到 GitHub Pages，不需要手动操作。
-
-- 查看部署状态：进入 GitHub 仓库的 **Actions** 页面。
-- 部署成功后，网站会在 1-3 分钟内更新。
-- 如果 Actions 显示红色叉号，可以点进去查看报错日志。
+| Directory / File     | Purpose                                                         |
+| :------------------- | :-------------------------------------------------------------- |
+| `_config.yml`        | Global site config: title, author, URL, social links, plugins   |
+| `_data/`             | Data files: social links, CV, journal abbreviations             |
+| `_pages/`            | Static pages: About, News, Blog, CV, Projects, Publications     |
+| `_news/`             | News items shown on the homepage                                |
+| `_posts/`            | Blog posts                                                      |
+| `_projects/`         | Project showcase content                                        |
+| `_bibliography/`     | BibTeX files for publications                                   |
+| `assets/`            | Images, audio, and other static assets                          |
+| `.github/workflows/` | GitHub Actions build and deployment configuration               |
 
 ---
 
-## 📄 许可证与致谢
+## 🚀 Deployment
 
-- 主题：[al-folio](https://github.com/alshedivat/al-folio)，遵循 MIT 许可证。
-- 本站内容（博客文章、图片等）版权归 Dajie Li 所有，未经允许请勿转载。
+Every push to the `main` branch triggers GitHub Actions to build the site and publish it to GitHub Pages automatically — no manual steps required.
+
+- Check deployment status on the repository's **Actions** page.
+- Once deployment succeeds, the site updates within 1–3 minutes.
+- If Actions shows a red cross, click into the run to inspect the error log.
 
 ---
 
-© 2026 Dajie Li. 保留所有权利。
+## 📄 License & Credits
+
+- Theme: [al-folio](https://github.com/alshedivat/al-folio), licensed under the MIT License.
+- Site content (blog posts, images, etc.) is copyright © Dajie Li. Please do not repost without permission.
+
+---
+
+© 2026 Dajie Li. All rights reserved.

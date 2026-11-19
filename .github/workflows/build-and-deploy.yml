@@ -5,11 +5,13 @@ on:
     branches: [main]
     paths-ignore:
       - "README.md"
+      - "README.zh-CN.md"
       - ".gitignore"
   pull_request:
     branches: [main]
     paths-ignore:
       - "README.md"
+      - "README.zh-CN.md"
       - ".gitignore"
 
   workflow_dispatch:
