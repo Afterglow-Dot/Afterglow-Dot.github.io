@@ -1,6 +1,6 @@
 # My Personal Website
 
-**[English](README.md)** | [简体中文](README.zh-CN.md)
+English | [简体中文](README.zh-CN.md)
 
 This is the repository for my personal website, built with the [al-folio](https://github.com/alshedivat/al-folio) theme.  
 The site records my study, research, and life during graduate school, and also shares course notes, coding practice, and everyday reflections.

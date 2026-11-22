@@ -1,6 +1,6 @@
 # 我的个人网站
 
-[English](README.md) | **[简体中文](README.zh-CN.md)**
+[English](README.md) | 简体中文
 
 这是我的个人网站仓库，基于 [al-folio](https://github.com/alshedivat/al-folio) 主题搭建。  
 网站用于记录研究生期间的学习、科研和生活，也会分享课程笔记、代码实践和日常思考。
