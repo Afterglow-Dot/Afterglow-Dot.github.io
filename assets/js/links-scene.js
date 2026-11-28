@@ -96,8 +96,8 @@
 
   function resize() {
     if (!renderer || !camera) return;
-    var width = stage.clientWidth;
-    var height = stage.clientHeight;
+    var width = holder.clientWidth;
+    var height = holder.clientHeight;
     if (!width || !height) return;
     renderer.setSize(width, height, false);
     camera.aspect = width / height;
@@ -193,7 +193,7 @@
 
     if (window.ResizeObserver) {
       ro = new ResizeObserver(resize);
-      ro.observe(stage);
+      ro.observe(holder);
     } else {
       window.addEventListener('resize', resize);
     }

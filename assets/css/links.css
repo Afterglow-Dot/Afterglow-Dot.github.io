@@ -32,7 +32,7 @@
   max-width: 100%;
   padding-left: 0;
   padding-right: 0;
-  margin-top: 0;
+  margin-top: 0 !important;
 }
 
 .links-stage {
@@ -45,7 +45,7 @@
   min-height: calc(100vh - 4.75rem);
   min-height: calc(100svh - 4.75rem);
   padding: clamp(2.5rem, 7vw, 4.5rem) 1rem clamp(3rem, 6vw, 5rem);
-  overflow: hidden;
+  overflow: visible;
   color: var(--links-ink);
   background:
     radial-gradient(110% 85% at 50% -10%, rgba(124, 58, 237, 0.42), transparent 62%),
@@ -65,7 +65,7 @@
 }
 
 .links-canvas {
-  position: absolute;
+  position: fixed;
   inset: 0;
   z-index: 0;
   pointer-events: none;
@@ -76,6 +76,101 @@
   display: block;
   width: 100% !important;
   height: 100% !important;
+}
+
+/* --------------------------------------------------------------------------
+   整页深色：固定 3D 画布 + 深色导航/页脚，填满导航下方和页脚处的空白
+   -------------------------------------------------------------------------- */
+
+html:has(.links-stage),
+html:has(.links-stage) body {
+  background-color: #07040f !important;
+  background-image: none !important;
+}
+
+/* 导航：半透明深色 + 毛玻璃，文字和图标改为浅色 */
+html:has(.links-stage) #navbar {
+  background-color: rgba(9, 5, 20, 0.62) !important;
+  -webkit-backdrop-filter: blur(18px) saturate(140%);
+  backdrop-filter: blur(18px) saturate(140%);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.28);
+}
+
+html:has(.links-stage) #navbar a,
+html:has(.links-stage) #navbar .nav-link,
+html:has(.links-stage) #navbar #search-toggle,
+html:has(.links-stage) #navbar #light-toggle,
+html:has(.links-stage) #navbar .navbar-toggler,
+html:has(.links-stage) #navbar .social i {
+  color: rgba(245, 243, 255, 0.84);
+}
+
+html:has(.links-stage) #navbar .navbar-brand {
+  color: #ffffff;
+}
+
+html:has(.links-stage) #navbar a:hover,
+html:has(.links-stage) #navbar .nav-link:hover {
+  color: #ffffff;
+}
+
+html:has(.links-stage) #navbar .nav-item.active > .nav-link {
+  color: #f0abfc;
+}
+
+html:has(.links-stage) #navbar #light-toggle i,
+html:has(.links-stage) #navbar .social i,
+html:has(.links-stage) #navbar .music-trigger i {
+  color: inherit;
+}
+
+html:has(.links-stage) #navbar .navbar-toggler {
+  border-color: rgba(255, 255, 255, 0.24);
+}
+
+html:has(.links-stage) #navbar .navbar-toggler .icon-bar {
+  background-color: rgba(245, 243, 255, 0.82);
+}
+
+html:has(.links-stage) #navbar .music-trigger {
+  color: #f5f3ff;
+}
+
+@media (max-width: 575.98px) {
+  html:has(.links-stage) #navbar .navbar-collapse {
+    background-color: rgba(10, 6, 22, 0.96);
+    border-radius: 0 0 18px 18px;
+    padding: 0.5rem 1rem 1rem;
+  }
+}
+
+/* 页脚：透明，直接露出固定画布；文字改为浅色 */
+html:has(.links-stage) footer,
+html:has(.links-stage) footer.sticky-bottom {
+  position: relative;
+  z-index: 1;
+  background: transparent !important;
+  border-top-color: rgba(255, 255, 255, 0.14);
+  color: rgba(245, 243, 255, 0.72);
+}
+
+html:has(.links-stage) footer .container,
+html:has(.links-stage) footer p,
+html:has(.links-stage) footer span,
+html:has(.links-stage) footer div,
+html:has(.links-stage) footer li {
+  color: inherit;
+}
+
+html:has(.links-stage) footer.sticky-bottom a,
+html:has(.links-stage) footer.fixed-bottom a {
+  color: #c4b5fd;
+}
+
+html:has(.links-stage) footer.sticky-bottom a:hover,
+html:has(.links-stage) footer.fixed-bottom a:hover {
+  color: #ffffff;
 }
 
 .links-inner {
