@@ -28,6 +28,11 @@
   var finePointer = window.matchMedia &&
     window.matchMedia('(hover: hover) and (pointer: fine) and (min-width: 768px)');
   var palette = ['#f0abfc', '#c4b5fd', '#7dd3fc', '#f9a8d4', '#fde68a', '#86efac'];
+  var BURST_COUNT = 10;
+  var BURST_DECAY = 0.026;
+  var BURST_DECAY_SPREAD = 0.012;
+  var BURST_SPEED = 1.2;
+  var BURST_SPEED_SPREAD = 2;
 
   function resize() {
     dpr = Math.min(window.devicePixelRatio || 1, 2);
@@ -48,10 +53,10 @@
   }
 
   function burst(x, y) {
-    var count = 20;
+    var count = BURST_COUNT;
     for (var i = 0; i < count; i += 1) {
       var angle = (Math.PI * 2 * i) / count + Math.random() * 0.25;
-      var speed = 2 + Math.random() * 4.2;
+      var speed = BURST_SPEED + Math.random() * BURST_SPEED_SPREAD;
       push({
         x: x,
         y: y,
@@ -60,7 +65,7 @@
         gravity: 0.055,
         drag: 0.985,
         life: 1,
-        decay: 0.012 + Math.random() * 0.012,
+        decay: BURST_DECAY + Math.random() * BURST_DECAY_SPREAD,
         size: 1.8 + Math.random() * 2.2,
         color: palette[Math.floor(Math.random() * palette.length)],
         trail: false
