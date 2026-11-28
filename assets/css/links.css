@@ -47,11 +47,8 @@
   padding: clamp(2.5rem, 7vw, 4.5rem) 1rem clamp(3rem, 6vw, 5rem);
   overflow: visible;
   color: var(--links-ink);
-  background:
-    radial-gradient(120% 90% at 50% -10%, rgba(139, 92, 246, 0.55), transparent 62%),
-    radial-gradient(90% 70% at 88% 12%, rgba(244, 114, 182, 0.3), transparent 64%),
-    radial-gradient(85% 75% at 8% 88%, rgba(56, 189, 248, 0.26), transparent 62%),
-    linear-gradient(165deg, #1d1236 0%, #2a1950 48%, #150e2c 100%);
+  /* 背景统一交给 body 的固定渐变，避免舞台上下出现黑色色带 */
+  background: transparent;
 }
 
 /* 主题的全局 p,h1,...,span,strong 规则会把 span 强制成正文黑色；
@@ -82,10 +79,23 @@
    整页深色：固定 3D 画布 + 深色导航/页脚，填满导航下方和页脚处的空白
    -------------------------------------------------------------------------- */
 
-html:has(.links-stage),
+html:has(.links-stage) {
+  background-color: #120b26 !important;
+}
+
+/* 渐变固定在视口上，而不是只铺在舞台盒子里；
+   这样导航上方、舞台与页脚之间也不会再出现黑色色带。 */
 html:has(.links-stage) body {
   background-color: #120b26 !important;
-  background-image: none !important;
+  background-image:
+    radial-gradient(120% 90% at 50% -10%, rgba(139, 92, 246, 0.55), transparent 62%),
+    radial-gradient(90% 70% at 88% 12%, rgba(244, 114, 182, 0.3), transparent 64%),
+    radial-gradient(85% 75% at 8% 88%, rgba(56, 189, 248, 0.26), transparent 62%),
+    linear-gradient(165deg, #1d1236 0%, #2a1950 48%, #150e2c 100%) !important;
+  background-attachment: fixed !important;
+  background-size: cover !important;
+  background-position: center !important;
+  background-repeat: no-repeat !important;
 }
 
 /* 导航：半透明深色 + 毛玻璃，文字和图标改为浅色 */
@@ -93,8 +103,8 @@ html:has(.links-stage) #navbar {
   background-color: rgba(32, 22, 58, 0.58) !important;
   -webkit-backdrop-filter: blur(18px) saturate(140%);
   backdrop-filter: blur(18px) saturate(140%);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.16);
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.22);
+  border-bottom: 0;
+  box-shadow: none;
 }
 
 html:has(.links-stage) #navbar a,
@@ -151,7 +161,8 @@ html:has(.links-stage) footer.sticky-bottom {
   position: relative;
   z-index: 1;
   background: transparent !important;
-  border-top-color: rgba(255, 255, 255, 0.18);
+  border-top: 0;
+  box-shadow: none;
   color: rgba(245, 243, 255, 0.8);
 }
 
