@@ -7,6 +7,7 @@ description: "常用网站和工具导航。"
 nav: true
 nav_order: 6
 links_page: true
+links_name: Afterglow-Dot
 ---
 
 <div class="links-stage">
@@ -33,7 +34,11 @@ links_page: true
 
       <p class="links-date" id="links-date">&nbsp;</p>
 
-      <h1 class="links-title" id="links-title">{{ site.first_name }} {{ site.last_name }}</h1>
+      {% assign links_name = page.links_name %}
+      {% if links_name == nil or links_name == blank %}
+        {% assign links_name = site.first_name | append: ' ' | append: site.last_name %}
+      {% endif %}
+      <h1 class="links-title" id="links-title">{{ links_name | strip }}</h1>
 
       <p class="links-tagline" aria-label="{{ page.subtitle | escape }}">
         <span class="links-tagline-text">{{ page.subtitle }}</span>
