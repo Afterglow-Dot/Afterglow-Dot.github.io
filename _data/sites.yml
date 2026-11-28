@@ -51,17 +51,17 @@
       icon: fa-brands fa-github
       desc: 我的代码仓库
       color: white
-    - name: 关于我
-      url: /
-      icon: fa-solid fa-user
-      desc: 个人主页
-      color: amber
-    - name: RSS
-      url: /feed.xml
-      icon: fa-solid fa-rss
-      desc: 订阅博客更新
-      color: orange
 
 - title: 友链
   icon: fa-solid fa-link
-  items: []
+  items:
+    - name: 3D 实验室
+      url: https://afterglow-dot.github.io/3D/
+      icon: fa-solid fa-cube
+      desc: 3D 可视化练习和探索
+      color: cyan
+    - name: Hydejack
+      url: https://afterglow-dot.github.io/Hydejack/
+      icon: fa-solid fa-layer-group
+      desc: 基于 Hydejack 的主题实践
+      color: purple
