@@ -1,9 +1,16 @@
 {% comment %}
   本地覆盖：al_folio_core 1.0.15 的 _includes/header.liquid
   -----------------------------------------------------------------------------
-  与 gem 原文的唯一差异：在折叠按钮之后引入 music.liquid。
+  与 gem 原文的差异：
+  1. 在折叠按钮之后引入 music.liquid。
+  2. /links/ 页面的 links.css（仅 page.links_page 时加载）。
   主题升级时请 diff 一次 gem 的新版 header.liquid，把差异重新套用。
 {% endcomment %}
+
+{% if page.links_page %}
+  <link rel="stylesheet" href="{{ '/assets/css/links.css' | relative_url | bust_file_cache }}">
+{% endif %}
+
 <header>
   <!-- Nav Bar -->
   <nav id="navbar" class="navbar navbar-light navbar-expand-sm {% if site.navbar_fixed %}fixed-top{% else %}sticky-top{% endif %}" role="navigation">

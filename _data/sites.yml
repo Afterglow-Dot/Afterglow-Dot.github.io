@@ -1,0 +1,67 @@
+# /links/ 页面的网站分组
+#
+# 每个分组：
+#   title  标签名
+#   icon   Font Awesome 类名（可省略）
+#   items  网站列表（可以为空）
+#
+# 每个网站：
+#   name   显示名称
+#   url    链接（站内写 /blog/ 这种；站外写完整 https://）
+#          注意：站点开启了 protect_email，直接写 mailto: 会绕过主题的邮箱保护，
+#          建议改用站内页面链接。
+#   icon   Font Awesome 类名（可省略）
+#   desc   鼠标悬停提示 / 读屏文案（可省略）
+#   color  光晕颜色：orange amber pink rose purple blue cyan green white
+#   dot    留空即可；写 true 会在名称后加一个小圆点
+
+- title: 学习
+  icon: fa-solid fa-book
+  items:
+    - name: 博客
+      url: /blog/
+      icon: fa-solid fa-pen-nib
+      desc: 学习笔记与生活随笔
+      color: pink
+    - name: 论文
+      url: /publications/
+      icon: fa-solid fa-file-lines
+      desc: 已发表和整理中的论文
+      color: purple
+    - name: 项目
+      url: /projects/
+      icon: fa-solid fa-folder-open
+      desc: 课程项目与代码实践
+      color: cyan
+
+- title: 科研
+  icon: fa-solid fa-flask
+  items:
+    - name: Overleaf
+      url: https://www.overleaf.com
+      icon: fa-solid fa-leaf
+      desc: 在线 LaTeX 写作
+      color: green
+
+- title: 工具
+  icon: fa-solid fa-screwdriver-wrench
+  items:
+    - name: GitHub
+      url: https://github.com/Afterglow-Dot
+      icon: fa-brands fa-github
+      desc: 我的代码仓库
+      color: white
+    - name: 关于我
+      url: /
+      icon: fa-solid fa-user
+      desc: 个人主页
+      color: amber
+    - name: RSS
+      url: /feed.xml
+      icon: fa-solid fa-rss
+      desc: 订阅博客更新
+      color: orange
+
+- title: 友链
+  icon: fa-solid fa-link
+  items: []
