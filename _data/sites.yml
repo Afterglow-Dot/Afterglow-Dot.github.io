@@ -15,8 +15,8 @@
 #   color  光晕颜色：orange amber pink rose purple blue cyan green white
 #   dot    留空即可；写 true 会在名称后加一个小圆点
 
-- title: 学习
-  icon: fa-solid fa-book
+- title: 本站内容
+  icon: fa-solid fa-compass
   items:
     - name: 博客
       url: /blog/
