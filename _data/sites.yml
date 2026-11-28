@@ -1,0 +1,56 @@
+# /links/ 页面的网站分组
+#
+# 每个分组：
+#   title  标签名
+#   icon   Font Awesome 类名
+#   items  网站列表
+#
+# 每个网站：
+#   name   显示名称
+#   url    链接（站内写 /blog/ 这种；站外写完整 https://）
+#   icon   Font Awesome 类名
+#   desc   鼠标悬停提示 / 读屏文案
+#   color  光晕颜色：orange amber pink rose purple blue cyan green white
+#   dot    留空即可；写 true 会在名称后加一个小圆点
+
+- title: 本站内容
+  icon: fa-solid fa-book
+  items:
+    - name: 首页
+      url: /
+      icon: fa-solid fa-house
+      desc: 回到个人主页
+      color: white
+    - name: 博客
+      url: /blog/
+      icon: fa-solid fa-pen-nib
+      desc: 学习笔记与生活随笔
+      color: pink
+
+- title: 工具
+  icon: fa-solid fa-screwdriver-wrench
+  items:
+    - name: Overleaf
+      url: https://www.overleaf.com
+      icon: fa-solid fa-leaf
+      desc: 在线 LaTeX 写作
+      color: green
+
+- title: 友链
+  icon: fa-solid fa-link
+  items:
+    - name: 3D 实验室
+      url: https://afterglow-dot.github.io/3D/
+      icon: fa-solid fa-cube
+      desc: 3D 可视化练习和探索
+      color: cyan
+    - name: Hydejack 主题博客
+      url: https://afterglow-dot.github.io/Hydejack/
+      icon: fa-solid fa-layer-group
+      desc: 基于 Hydejack 主题的博客
+      color: purple
+    - name: GitHub
+      url: https://github.com/Afterglow-Dot
+      icon: fa-brands fa-github
+      desc: 我的代码仓库
+      color: white

@@ -12,17 +12,20 @@ The site records my study, research, and life during graduate school, and also s
 
 ## 📁 Project Structure
 
-| Directory / File     | Purpose                                                         |
-| :------------------- | :-------------------------------------------------------------- |
-| `_config.yml`        | Global site config: title, author, URL, social links, plugins   |
-| `_data/`             | Data files: social links, CV, journal abbreviations             |
-| `_pages/`            | Static pages: About, News, Blog, CV, Projects, Publications     |
-| `_news/`             | News items shown on the homepage                                |
-| `_posts/`            | Blog posts                                                      |
-| `_projects/`         | Project showcase content                                        |
-| `_bibliography/`     | BibTeX files for publications                                   |
-| `assets/`            | Images, audio, and other static assets                          |
-| `.github/workflows/` | GitHub Actions build and deployment configuration               |
+| Directory / File     | Purpose                                                            |
+| :------------------- | :----------------------------------------------------------------- |
+| `_config.yml`        | Global config: title, author, URL, plugins                         |
+| `_data/`             | Data files: socials, CV, sites, venues                             |
+| `_includes/`         | Custom includes: header, scripts, links page, music                |
+| `_pages/`            | Static pages: About, News, Blog, CV, Projects, Publications, Links |
+| `_news/`             | Homepage news                                                      |
+| `_posts/`            | Blog posts                                                         |
+| `_projects/`         | Project showcase                                                   |
+| `_bibliography/`     | BibTeX file for publications                                       |
+| `assets/`            | Images, fonts, audio, and other static assets                      |
+| `assets/css/`        | Styles for the links page                                          |
+| `assets/js/`         | Scripts for the links page                                         |
+| `.github/workflows/` | GitHub Actions build and deployment                                |
 
 ---
 

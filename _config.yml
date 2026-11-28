@@ -264,8 +264,8 @@ jekyll-archives:
       tags: "/blog/:type/:name/"
       categories: "/blog/:type/:name/"
 
-display_tags: ["生活", "学习", "科研", "读书", "随笔", "代码"] # these tags will be displayed on the front page of your blog
-display_categories: ["日常记录", "学习笔记", "科研进展", "读书分享"] # these categories will be displayed on the front page of your blog
+display_tags: ["生活", "学习", "科研", "读书", "随笔", "English"] # these tags will be displayed on the front page of your blog
+display_categories: ["日常记录", "Daily Record", "科研进展", "读书分享"] # these categories will be displayed on the front page of your blog
 
 # -----------------------------------------------------------------------------
 # Jekyll Scholar

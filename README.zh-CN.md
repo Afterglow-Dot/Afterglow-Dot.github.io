@@ -14,15 +14,18 @@
 
 | 目录 / 文件          | 作用                                                  |
 | :------------------- | :---------------------------------------------------- |
-| `_config.yml`        | 网站全局配置：标题、作者、URL、社交链接、插件等        |
-| `_data/`             | 数据文件：社交链接、简历、期刊缩写                     |
-| `_pages/`            | 固定页面：关于我、最新动态、博客、简历、项目、论文等   |
-| `_news/`             | 首页新闻动态                                           |
-| `_posts/`            | 博客文章                                               |
-| `_projects/`         | 展示项目的内容                                         |
-| `_bibliography/`     | 论文 BibTeX 文件                                       |
-| `assets/`            | 图片、音频等静态资源                                   |
-| `.github/workflows/` | GitHub Actions 构建与部署配置                          |
+| `_config.yml`        | 网站全局配置：标题、作者、URL、插件等                 |
+| `_data/`             | 数据文件：社交链接、简历、站点分组、期刊缩写          |
+| `_includes/`         | 自定义片段：页头、脚本、links 页、音乐                |
+| `_pages/`            | 固定页面：关于我、动态、博客、简历、项目、论文、links |
+| `_news/`             | 首页新闻动态                                          |
+| `_posts/`            | 博客文章                                              |
+| `_projects/`         | 展示项目的内容                                        |
+| `_bibliography/`     | 论文 BibTeX 文件                                      |
+| `assets/`            | 图片、字体、音频等静态资源                            |
+| `assets/css/`        | links 页样式                                          |
+| `assets/js/`         | links 页脚本                                          |
+| `.github/workflows/` | GitHub Actions 构建与部署配置                         |
 
 ---
 

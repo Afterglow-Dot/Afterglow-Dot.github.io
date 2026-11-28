@@ -157,3 +157,14 @@
   <!-- 背景音乐：换页靠 sessionStorage 续播，开关与音量靠 localStorage -->
   <script src="{{ '/assets/music/music.js' | relative_url | bust_file_cache }}" type="text/javascript"></script>
 {% endif %}
+
+{% if page.links_page %}
+  <!-- /links/ 页面：时钟、分组标签、3D 背景、打字机、磁吸、烟花、低配降级 -->
+  <script defer src="{{ '/assets/js/links-lite.js' | relative_url | bust_file_cache }}"></script>
+  <script defer src="{{ '/assets/js/links-tabs.js' | relative_url | bust_file_cache }}"></script>
+  <script defer src="{{ '/assets/js/links-clock.js' | relative_url | bust_file_cache }}"></script>
+  <script defer src="{{ '/assets/js/links-typewriter.js' | relative_url | bust_file_cache }}"></script>
+  <script defer src="{{ '/assets/js/links-magnetic.js' | relative_url | bust_file_cache }}"></script>
+  <script defer src="{{ '/assets/js/links-fireworks.js' | relative_url | bust_file_cache }}"></script>
+  <script type="module" src="{{ '/assets/js/links-scene.js' | relative_url | bust_file_cache }}"></script>
+{% endif %}

@@ -1,0 +1,67 @@
+{% assign groups = site.data.sites %}
+{% if groups and groups.size > 0 %}
+  <div class="sites-box" id="links-sites">
+    {% if groups.size > 1 %}
+      <div class="sites-tabs">
+        <div class="sites-seg" role="tablist" aria-label="网站分组">
+          <span class="sites-seg-thumb" aria-hidden="true">
+            {% for group in groups %}
+              <i class="sites-tint-{{ forloop.index0 | modulo: 3 }}{% if forloop.first %} is-active{% endif %}"></i>
+            {% endfor %}
+          </span>
+          {% for group in groups %}
+            <button
+              type="button"
+              class="sites-tab sites-tint-{{ forloop.index0 | modulo: 3 }}{% if forloop.first %} is-active{% endif %}"
+              style="--i: {{ forloop.index0 }}"
+              id="links-tab-{{ forloop.index }}"
+              role="tab"
+              aria-selected="{% if forloop.first %}true{% else %}false{% endif %}"
+              aria-controls="links-panel-{{ forloop.index }}"
+              tabindex="{% if forloop.first %}0{% else %}-1{% endif %}"
+            >
+              {% if group.icon %}<i class="{{ group.icon }}" aria-hidden="true"></i>{% endif %}
+              <span>{{ group.title }}</span>
+              <span class="sites-tab-count">{{ group.items | size }}</span>
+            </button>
+          {% endfor %}
+        </div>
+      </div>
+    {% endif %}
+
+    <div class="sites-panels">
+      {% for group in groups %}
+        <div
+          class="sites-panel{% if forloop.first %} is-active{% endif %}"
+          id="links-panel-{{ forloop.index }}"
+          {% if groups.size > 1 %}
+            role="tabpanel" aria-labelledby="links-tab-{{ forloop.index }}"
+          {% else %}
+            role="region" aria-label="{{ group.title | escape }}"
+          {% endif %}
+        >
+          {% if group.items and group.items.size > 0 %}
+            <div class="sites-grid">
+              {% for item in group.items %}
+                <a
+                  class="site-link glow-c-{{ item.color | default: 'purple' }}"
+                  style="--i: {{ forloop.index0 }}"
+                  href="{% if item.url contains '://' or item.url contains 'mailto:' %}{{ item.url }}{% else %}{{ item.url | relative_url }}{% endif %}"
+                  {% if item.desc %}title="{{ item.desc | escape }}" aria-label="{{ item.name | escape }}：{{ item.desc | escape }}"{% endif %}
+                  {% if item.url contains '://' %}target="_blank" rel="noopener noreferrer"{% endif %}
+                >
+                  {% if item.icon %}<i class="{{ item.icon }}" aria-hidden="true"></i>{% endif %}
+                  <span class="site-link-name">{{ item.name }}</span>
+                  {% if item.dot %}<span class="site-dot" aria-hidden="true"></span>{% endif %}
+                  <i class="fa-solid fa-arrow-right site-link-arrow" aria-hidden="true"></i>
+                </a>
+              {% endfor %}
+            </div>
+          {% else %}
+            <p class="sites-empty">这里还没有内容，之后再加。</p>
+          {% endif %}
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+{% endif %}
