@@ -327,12 +327,35 @@ html:has(.links-stage) footer.fixed-bottom a:hover {
 }
 
 .links-tagline .links-tagline-text {
+  display: inline-block;
   background: linear-gradient(90deg, #ffe0ef, #d8ccff 55%, #bfe3ff);
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
   -webkit-text-fill-color: transparent;
   filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.45));
+}
+
+.links-tagline-text.is-typing::after {
+  content: '';
+  display: inline-block;
+  width: 1px;
+  height: 1em;
+  margin-left: 2px;
+  vertical-align: -0.12em;
+  background: rgba(255, 255, 255, 0.85);
+  animation: links-caret 1s steps(1) infinite;
+}
+
+@keyframes links-caret {
+  0%,
+  49% {
+    opacity: 1;
+  }
+  50%,
+  100% {
+    opacity: 0;
+  }
 }
 
 .links-tagline-dot {
@@ -555,6 +578,7 @@ html:has(.links-stage) footer.fixed-bottom a:hover {
   text-decoration: none;
   transition:
     transform 0.25s ease,
+    translate 0.2s ease,
     background 0.25s ease,
     border-color 0.25s ease,
     box-shadow 0.25s ease,
@@ -731,6 +755,71 @@ html:has(.links-stage) footer.fixed-bottom a:hover {
 html.lite .links-canvas,
 html.lite .links-stage .links-canvas {
   display: none;
+}
+
+/* 点击烟花 + 桌面鼠标拖尾：由 links-fireworks.js 动态创建 */
+.links-fx {
+  position: fixed;
+  inset: 0;
+  z-index: 60;
+  display: block;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+html.lite .links-fx {
+  display: none;
+}
+
+/* 入场动画：卡片 → 标签 → 链接按钮依次出现 */
+@media (prefers-reduced-motion: no-preference) {
+  .links-card {
+    animation: links-card-in 0.7s cubic-bezier(0.2, 0.7, 0.2, 1) both;
+  }
+
+  .sites-tabs {
+    animation: links-rise 0.5s ease 0.16s both;
+  }
+
+  .sites-tab {
+    animation: links-rise 0.4s ease both;
+    animation-delay: calc(0.22s + var(--i, 0) * 0.05s);
+  }
+
+  .sites-panel.is-active .site-link,
+  .sites-panel.is-active .sites-empty {
+    animation: links-rise 0.5s ease backwards;
+    animation-delay: calc(0.34s + var(--i, 0) * 0.04s);
+  }
+}
+
+@keyframes links-card-in {
+  from {
+    opacity: 0;
+    transform: translateY(18px) scale(0.99);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes links-rise {
+  from {
+    opacity: 0;
+    transform: translateY(9px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .links-fx {
+    display: none !important;
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {

@@ -3,7 +3,7 @@ layout: default
 title: Links
 subtitle: 记录学习，也记录生活
 permalink: /links/
-description: "常用网站与工具导航：学习、科研、工具与友链。"
+description: "常用网站和工具导航。"
 nav: true
 nav_order: 6
 links_page: true
@@ -35,7 +35,7 @@ links_page: true
 
       <h1 class="links-title" id="links-title">{{ site.first_name }} {{ site.last_name }}</h1>
 
-      <p class="links-tagline">
+      <p class="links-tagline" aria-label="{{ page.subtitle | escape }}">
         <span class="links-tagline-text">{{ page.subtitle }}</span>
         <span class="links-tagline-dot" aria-hidden="true"></span>
       </p>

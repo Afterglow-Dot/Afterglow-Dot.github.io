@@ -13,6 +13,7 @@
             <button
               type="button"
               class="sites-tab sites-tint-{{ forloop.index0 | modulo: 3 }}{% if forloop.first %} is-active{% endif %}"
+              style="--i: {{ forloop.index0 }}"
               id="links-tab-{{ forloop.index }}"
               role="tab"
               aria-selected="{% if forloop.first %}true{% else %}false{% endif %}"
@@ -44,6 +45,7 @@
               {% for item in group.items %}
                 <a
                   class="site-link glow-c-{{ item.color | default: 'purple' }}"
+                  style="--i: {{ forloop.index0 }}"
                   href="{% if item.url contains '://' or item.url contains 'mailto:' %}{{ item.url }}{% else %}{{ item.url | relative_url }}{% endif %}"
                   {% if item.desc %}title="{{ item.desc | escape }}" aria-label="{{ item.name | escape }}：{{ item.desc | escape }}"{% endif %}
                   {% if item.url contains '://' %}target="_blank" rel="noopener noreferrer"{% endif %}
