@@ -336,7 +336,10 @@ html:has(.links-stage) footer.fixed-bottom a:hover {
   filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.45));
 }
 
-.links-tagline-text.is-typing::after {
+/* 日期、姓名、签名共用同一枚光标；三行由 links-typewriter.js 依次打出 */
+.links-tagline-text.is-typing::after,
+.links-date.is-typing::after,
+.links-title.is-typing::after {
   content: '';
   display: inline-block;
   width: 1px;
@@ -345,6 +348,14 @@ html:has(.links-stage) footer.fixed-bottom a:hover {
   vertical-align: -0.12em;
   background: rgba(255, 255, 255, 0.85);
   animation: links-caret 1s steps(1) infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .links-date.is-typing::after,
+  .links-title.is-typing::after,
+  .links-tagline-text.is-typing::after {
+    animation: none;
+  }
 }
 
 @keyframes links-caret {
@@ -776,6 +787,11 @@ html.lite .links-fx {
 @media (prefers-reduced-motion: no-preference) {
   .links-card {
     animation: links-card-in 0.7s cubic-bezier(0.2, 0.7, 0.2, 1) both;
+  }
+
+  /* 时钟不逐字打（每秒都在刷新），用整体浮现接住下面三行的打字节奏 */
+  .links-clock {
+    animation: links-rise 0.45s ease 0.04s both;
   }
 
   .sites-tabs {

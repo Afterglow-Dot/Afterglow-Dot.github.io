@@ -8,9 +8,23 @@
   var minutesEl = clock ? clock.querySelector('[data-clock="minutes"]') : null;
   var secondsEl = clock ? clock.querySelector('[data-clock="seconds"]') : null;
   var timer = 0;
+  var dateKey = '';
 
   function pad(value) {
     return value < 10 ? '0' + value : String(value);
+  }
+
+  function formatDate(now) {
+    try {
+      return now.toLocaleDateString('zh-CN', {
+        year: 'numeric',
+        month: 'long',
+        day: 'numeric',
+        weekday: 'long',
+      });
+    } catch (err) {
+      return now.getFullYear() + '年' + (now.getMonth() + 1) + '月' + now.getDate() + '日';
+    }
   }
 
   function render() {
@@ -30,17 +44,14 @@
       }
     }
 
+    // 日期一天只变一次：只在跨天时写入，避免每秒覆盖打字机正在输入的内容
     if (dateEl) {
-      try {
-        dateEl.textContent = now.toLocaleDateString('zh-CN', {
-          year: 'numeric',
-          month: 'long',
-          day: 'numeric',
-          weekday: 'long',
-        });
-      } catch (err) {
-        dateEl.textContent =
-          now.getFullYear() + '年' + (now.getMonth() + 1) + '月' + now.getDate() + '日';
+      var key = now.getFullYear() + '/' + now.getMonth() + '/' + now.getDate();
+      if (key !== dateKey) {
+        dateKey = key;
+        var text = formatDate(now);
+        dateEl.textContent = text;
+        dateEl.setAttribute('data-full', text);
       }
     }
   }
