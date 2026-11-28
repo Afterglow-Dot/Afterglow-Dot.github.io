@@ -34,23 +34,14 @@
       desc: 课程项目与代码实践
       color: cyan
 
-- title: 科研
-  icon: fa-solid fa-flask
+- title: 工具
+  icon: fa-solid fa-screwdriver-wrench
   items:
     - name: Overleaf
       url: https://www.overleaf.com
       icon: fa-solid fa-leaf
       desc: 在线 LaTeX 写作
       color: green
-
-- title: 工具
-  icon: fa-solid fa-screwdriver-wrench
-  items:
-    - name: GitHub
-      url: https://github.com/Afterglow-Dot
-      icon: fa-brands fa-github
-      desc: 我的代码仓库
-      color: white
 
 - title: 友链
   icon: fa-solid fa-link
@@ -60,8 +51,13 @@
       icon: fa-solid fa-cube
       desc: 3D 可视化练习和探索
       color: cyan
-    - name: Hydejack
+    - name: Hydejack 博客
       url: https://afterglow-dot.github.io/Hydejack/
       icon: fa-solid fa-layer-group
       desc: 基于 Hydejack 的主题实践
       color: purple
+    - name: GitHub
+      url: https://github.com/Afterglow-Dot
+      icon: fa-brands fa-github
+      desc: 我的代码仓库
+      color: white
