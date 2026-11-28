@@ -163,21 +163,21 @@
       group.add(mesh);
     });
 
-    var count = 900;
+    var count = 1200;
     var positions = new Float32Array(count * 3);
     for (var i = 0; i < count; i += 1) {
-      positions[i * 3] = (Math.random() - 0.5) * 13;
-      positions[i * 3 + 1] = (Math.random() - 0.5) * 9;
-      positions[i * 3 + 2] = (Math.random() - 0.5) * 7;
+      positions[i * 3] = (Math.random() - 0.5) * 15;
+      positions[i * 3 + 1] = (Math.random() - 0.5) * 10;
+      positions[i * 3 + 2] = (Math.random() - 0.5) * 8;
     }
 
     var particleGeometry = new THREE.BufferGeometry();
     particleGeometry.setAttribute('position', new THREE.BufferAttribute(positions, 3));
     var particleMaterial = new THREE.PointsMaterial({
       color: 0xf9a8d4,
-      size: 0.03,
+      size: 0.033,
       transparent: true,
-      opacity: 0.7,
+      opacity: 0.85,
       depthWrite: false,
       blending: THREE.AdditiveBlending,
       sizeAttenuation: true,
