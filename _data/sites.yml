@@ -14,23 +14,18 @@
 #   dot    留空即可；写 true 会在名称后加一个小圆点
 
 - title: 本站内容
-  icon: fa-solid fa-compass
+  icon: fa-solid fa-book
   items:
+    - name: 首页
+      url: /
+      icon: fa-solid fa-house
+      desc: 回到个人主页
+      color: white
     - name: 博客
       url: /blog/
       icon: fa-solid fa-pen-nib
       desc: 学习笔记与生活随笔
       color: pink
-    - name: 论文
-      url: /publications/
-      icon: fa-solid fa-file-lines
-      desc: 已发表和整理中的论文
-      color: purple
-    - name: 项目
-      url: /projects/
-      icon: fa-solid fa-folder-open
-      desc: 课程项目与代码实践
-      color: cyan
 
 - title: 工具
   icon: fa-solid fa-screwdriver-wrench
@@ -49,7 +44,7 @@
       icon: fa-solid fa-cube
       desc: 3D 可视化练习和探索
       color: cyan
-    - name: Hydejack 博客
+    - name: Hydejack 主题博客
       url: https://afterglow-dot.github.io/Hydejack/
       icon: fa-solid fa-layer-group
       desc: 基于 Hydejack 主题的博客
