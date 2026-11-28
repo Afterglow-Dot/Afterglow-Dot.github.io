@@ -1,6 +1,6 @@
 ---
 layout: default
-title: 导航
+title: Links
 subtitle: 记录学习，也记录生活
 permalink: /links/
 description: "常用网站与工具导航：学习、科研、工具与友链。"
